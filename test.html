@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Algorithmic Visualization</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="file" type="file" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js"></script>
+    <script type="module">
+      import { OrbitControls } from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/examples/jsm/controls/OrbitControls.js';
+
+      // シーンの準備
+      const scene = new THREE.Scene();
+
+      // カメラの準備
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+      // レンダラーの準備
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // ライトの準備
+      const directionalLight = new THREE.DirectionalLight('#ffffff', 1);
+      directionalLight.position.set(0, 10, 10);
+      scene.background = new THREE.Color('#777777');
+
+      scene.add(directionalLight);
+
+      //   let texture = new THREE.TextureLoader().load(
+      //     'https://qiita-image-store.s3.amazonaws.com/0/11290/cc8770c3-59fb-6101-79d4-d595998842d6.png'
+      //   );
+      //   texture.minFilter = THREE.LinearFilter;
+
+      // 3Dオブジェクトを作る
+      let geometry = new THREE.PlaneGeometry(30, 20);
+      let material = new THREE.MeshPhongMaterial();
+
+      const plane = new THREE.Mesh(geometry, material);
+      //   plane.name = 'plane';
+      scene.add(plane);
+
+      //   plane.rotation.set(1.8, 0, 0);
+
+      var filechange = document.getElementById('file');
+      filechange.addEventListener('change', textureSwitch, false);
+
+      function textureSwitch(event) {
+        // 要素内イベントのキャンセル
+        event.preventDefault();
+
+        // 1つ目のファイルを読み込む
+        var file = event.target.files[0];
+
+        // FileReader オブジェクトの作成
+        var reader = new FileReader();
+
+        reader.onload = function (event) {
+          // 「img」でエレメントオブジェクト作成
+          var img = document.createElement('img');
+
+          img.src = event.target.result;
+
+          // テクスチャの更新（meshは作成済みのオブジェクト）
+          plane.material.map = new THREE.Texture(img);
+          plane.material.map.needsUpdate = true;
+        };
+        // データURLとしてファイルを読み込む
+        reader.readAsDataURL(file);
+      }
+      // アニメーションループの開始
+      function animate() {
+        // requestAnimationFrame(animate);
+        // plane.rotation.x += 0.01;
+        // plane.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      }
+      animate();
+      const controls = new OrbitControls(camera, renderer.domElement);
+      function tick() {
+        controls.update();
+
+        renderer.render(scene, camera);
+      }
+      tick();
+    </script>
+  </body>
+</html>
