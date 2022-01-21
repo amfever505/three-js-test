@@ -73,7 +73,7 @@ async function init(url) {
       Ura.color.setHex(color);
     });
   });
-  //
+  //位置調整
   const box = new THREE.Box3().setFromObject(model);
   const modelW = box.max.x - box.min.x;
   const modelH = box.max.y - box.min.y;
@@ -87,7 +87,7 @@ async function init(url) {
     // 要素内イベントのキャンセル
     event.preventDefault();
 
-    // 1つ目のファイルを読み込む
+    // ファイルを読み込む　→デフォルトにする
     var file = event.target.files[0];
 
     // FileReader オブジェクトの作成
@@ -108,21 +108,22 @@ async function init(url) {
     reader.readAsDataURL(file);
   }
   // 位置設定
-
   model.position.set(-modelW / 60, -modelH / 10, -25);
   console.log(modelW / camera.position.z);
 
   model.scale.set(0.2, 0.2, 0.2);
   scene.add(model);
-
+  // いらないかも？
   renderer.setAnimationLoop(tick);
 
   // ar url作成
   const arBtn = document.querySelector('#arBtn');
 
-  let arLink = 'https://iwnb3.csb.app/?';
+  // let arLink = 'https://iwnb3.csb.app/?';
+  let arLink = 'https://farme-test.herokuapp.com/ar.html?'; //heroku test 環境
 
   arBtn.addEventListener('click', (e) => {
+    // idとりあえず1でお試し
     arLink = arLink + 'id=1&Waku=' + WakuPicker.value.slice(1) + '&Ura=' + UraPicker.value.slice(1);
     console.log(arLink);
     $(function () {
@@ -132,7 +133,7 @@ async function init(url) {
       $('#qr').qrcode({ width: 160, height: 160, text: utf8qrtext });
     });
 
-    arLink = 'https://iwnb3.csb.app/?';
+    arLink = 'https://farme-test.herokuapp.com/ar.html?';
   });
   // アニメーション関連
   function tick() {
@@ -140,8 +141,6 @@ async function init(url) {
 
     // if (model) {
     //   model.rotation.x += 0;
-    //   model.rotation.y += 0;
-    //   model.rotation.z += 0;
     // }
     renderer.render(scene, camera);
   }
@@ -152,13 +151,13 @@ async function init(url) {
 }
 
 let url = '3D/model/frame2_golden_509_394.glb';
-
+// 初期化
 window.addEventListener('load', init(url));
 const resetBtn = document.querySelector('#resetBtn');
 resetBtn.addEventListener('click', () => {
   init(url);
 });
-
+// サイズ切り替え
 const modelNo = document.querySelector('#model-no');
 modelNo.addEventListener('change', (e) => {
   if (modelNo.value == 1) {
