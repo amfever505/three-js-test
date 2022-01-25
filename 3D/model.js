@@ -29,7 +29,7 @@ async function init(url) {
   // ライティング
   renderer.shadowMap.enabled = true;
   const light = new THREE.AmbientLight(0xffffff, 1);
-  const spotlight = new THREE.SpotLight(0xcccccc, 1.5, 200, Math.PI / 2, 1, 1);
+  const spotlight = new THREE.SpotLight(0xffffff, 2, 200, Math.PI / 2, 1, 2);
   spotlight.castShadow = true;
   spotlight.position.set(0, 0, 60);
   scene.add(spotlight);
