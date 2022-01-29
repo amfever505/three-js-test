@@ -9,26 +9,9 @@ body {
   font-family: "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", YuGothic,sans-serif;
   font-size: 16px;
   line-height: 1.8;
-  color: #444;
+  color: #000;
   position:relative
 }
-
-a{  
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 30px;
-    font-family: 'Poiret One', cursive;
-    transition: 0.5s;
-    line-height: 60px;
-    margin: 300px 15px 0 50px;
-}
-
-a:hover{
-    border-bottom: 3px solid #000;
-    transition: ease-in-out 0.1s;
-}
-
 
 
 h1{
@@ -47,12 +30,12 @@ p{
 }
 
 .custom-top{
-  background-image: url(../images/custombg.jpg);
+  background-image: url(../images/custombg.png);
   width: 100%;
   height: 800px;
   background-size:cover;
   position: relative;
-  color: #000;
+  background-color: #F8F8F8;
 }
 
 
@@ -93,7 +76,7 @@ nav{
     flex-shrink:0; コンテナの幅より大きい場合に縮小倍率を数値で指定（デフォルトは 1）
     flex-basis:220px; 基準となる幅を設定（デフォルトは auto）
     */
-    background-color: #fff;
+    background-color: #F8F8F8;
 }
 
 nav.active { 
@@ -101,26 +84,15 @@ nav.active {
     z-index: 200;
 }
 
-/* nav.active1 { 
-    background-color: #E6EFF5;
-    z-index: 100;
-}
-
-nav.active2 { 
-    background-color: #fff;
-    z-index: 100;
-} */
-
-nav#steps{
+#steps{
     position: fixed;
-    top:0;
-    width: 100%;
+    bottom: 700px;
+    left: 10px;
     margin: 300px 15px 0 50px;
-    background-color: rosybrown;
 }
 
-nav#steps a{
-    color: #fdc200;
+#steps a{
+    color: #000000;
     font-weight: bold;
     text-decoration: none;
     font-size: 33px;
@@ -128,64 +100,16 @@ nav#steps a{
     transition: 0.5s;
     line-height: 60px;
 }
-
-nav#steps a:hover{
+#steps a:hover{
     border-bottom: 3px solid #000;
     transition: ease-in-out 0.1s;
 }
 
-
-/* #t1:target ul .icon,
-#t2:target ul .icon,
-#t3:target ul .icon,
-#t4:target ul .icon,
-#t5:target ul .icon{
-  transform: scale(.6);
-  -webkit-transform: scale(.6);
-  -moz-transform: scale(.6);
-  -o-transform: scale(.6);
-  transition-delay: .25s;
+#steps li{
+    padding: 25px 0;
 }
 
-#t1:target #top,
-#t2:target #intro,
-#t3:target #choice,
-#t4:target #extra,
-#t5:target #shop{
-  transform: scale(1.0) !important;
-  -webkit-transform: scale(1.0) !important;
-  -moz-transform: scale(1.0) !important;
-  -o-transform: scale(1.0) !important;
-}
 
-ul#step {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 7px;
-  margin: auto;
-  height: 280px;
-  width: 10%;
-  padding: 0;
-  text-align: center;
- }
-
- ul#step .icon:hover {
-   opacity: 0.5;
- }
-
-#navi .icon {
-  margin: 30px 0;
-  transition: all .5s ease-out !important;
-  -webkit-transition: all .5s ease-out;
-  -moz-transition: all .5s ease-out;
-  -o-transition: all .5s ease-out;
-}
- */
-
-
-
-/*幅が可変するメインコンテンツ　flexboxの子要素（flexアイテム）*/
 /*Main*/
 .main{
     flex:1 1 auto;
@@ -200,41 +124,9 @@ ul#step {
     align-items: center;
 }
 
-.wrapper1{
-    width: 100%;
-    margin: 0 0 auto;
-    background-image: url("../img/bg.png");
-    background-position: center center;
-}
-
-/*top*/
-
-ul.top{
-    width: 70%;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.top li{
-    flex: 1 1 25%;
-    height: auto;
-    width: 50px;
-    align-items: center;
-}
-
-.top img{
-    max-width: 100px;
-}
-
-.top img:hover{
-    transition: .3s;
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-    }
-
+/* body.active{
+    overflow-y: hidden;
+} */
 
 
 /*Menu*/
@@ -242,7 +134,7 @@ ul.top{
 
 ul.menu{
     position: absolute;
-    left: 30px;
+    left: 50px;
     font-size: 16px;
 }
 
@@ -253,13 +145,17 @@ ul.menu{
     display: flex;
 }
 
+.menu p{
+    margin-left: 30px;
+}
+
 .menu img{
-    width: 60%;
+    width: 50%;
 }
 
 ul.menu1{
     position: absolute;
-    top: 520px;
+    top: 730px;
     left: 720px;
 }
 
@@ -295,7 +191,7 @@ ul.menu1{
 }
 
 .menu1 img{
-    width: 50%;
+    width: 45%;
 }
 
 img#menu_deco1{
@@ -311,21 +207,29 @@ img#menu_deco2{
 }
 
 
-
 /*Section1*/
 
+.container{
+    position: fixed;
+}
+
 .section1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     position: relative;
     height: 1000px;
     width: 100%;
     overflow: hidden;
     padding: 0;
-    background-color: #fff;
+    background-color: #F8F8F8;
+
 }
 
-h1.subcopy{
-    left: 25%;
+
+h1.subcopy1{
     position: absolute;
+    left: 25%;
     align-content: center;
     margin: 37px auto;
     line-height: 60px;
@@ -341,7 +245,7 @@ h1.subcopy{
 h2.menuttl{
     position: absolute;
     top: 20%;
-    left: 15%;
+    left: 14%;
     transform: translate(-50%, -50%);
     align-content: center;
     margin: 70px 30px 20px 20px;
@@ -349,412 +253,6 @@ h2.menuttl{
     font-size: 50px;
     font-weight: lighter;
     color: #ADADAD;
-}
-
-
-
-/*Section2*/
-
-.section2 {
-    position: relative;
-    height: 800px;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
-    padding: 0 0;
-    background-color: fff;
-    display:flex;
-}
-
-.section2.left {
-    display:inline-block;
-    width: 50%;
-    margin-top: 150px;
-    overflow: hidden;
-    position: sticky;
-
-}
-
-.section2.right {
-    position: relative;
-    display:inline-block;
-    width: 50%;
-    margin: 150px 0 0 0;
-    overflow: hidden;
-}
-
-
-#step{
-    text-align: left;
-    margin: 40px 0 10px 50px;
-    max-width: 62%;
-    color: #000;
-    font-size: 20px;
-}
-
-
-
-h1.subcopy1{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    align-content: center;
-    margin: 40px auto;
-    line-height: 60px;
-    font-size: 80px;
-    font-weight: bold;
-    color: #000;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-}
-
-/*Section3*/
-
-.section3 {
-    height: 800px;
-    width: 100%;
-    z-index: 100;
-    overflow-x: hidden;
-    padding: 0;
-    background-color: rosybrown;
-}
-
-.section3.left {
-    width: 60%;
-    position: relative;
-    left: 0;
-}
-
-.section3.right {
-    width: 40%;
-    position: absolute;
-    right: 0;
-}
-
-h2.menuttl3{
-    position: absolute;
-    top: 23%;
-    left: 15%;
-    transform: translate(-50%, -50%);
-    align-content: center;
-    margin: 70px 30px 20px 20px;
-    padding-top: 0;
-    font-size: 50px;
-    font-weight: lighter;
-    color: #ADADAD;
-}
-
-h3.subcopy3{
-    position: absolute;
-    top: 18%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-    align-content: center;
-    margin: 0 0 10px 0;
-    line-height: 1.4em;
-    font-size: 33px;
-    font-weight: bold;
-    font-family: "Segoe UI";
-    color: #000;
-}
-
-/*Section4*/
-
-.section4 {
-    height: 800px;
-    width: 100%;
-    z-index: 100;
-    overflow-x: hidden;
-    padding: 0;
-    background-color: steelblue;
-}
-
-.section4.left {
-    width: 60%;
-    position: relative;
-    left: 0;
-}
-
-.section4.right {
-    width: 40%;
-    position: absolute;
-    right: 0;
-}
-
-h2.menuttl3{
-    position: absolute;
-    top: 23%;
-    left: 15%;
-    transform: translate(-50%, -50%);
-    align-content: center;
-    margin: 70px 30px 20px 20px;
-    padding-top: 0;
-    font-size: 50px;
-    font-weight: lighter;
-    color: #ADADAD;
-}
-
-h3.subcopy3{
-    position: absolute;
-    top: 18%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-    align-content: center;
-    margin: 0 0 10px 0;
-    line-height: 1.4em;
-    font-size: 33px;
-    font-weight: bold;
-    font-family: "Segoe UI";
-    color: #000;
-}
-
-/*About*/
-#about{
-    width: 100%;
-    margin: 0 0 0 0;
-    font-family: "Segoe UI", serif;
-}
-
-
-/*JQuery*/
-.bg-slider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.textarea{
-    width: 45%;
-    max-width: 590px;
-    margin: 0 0 40px;
-    font-family: "Segoe UI", serif;
-}
-
-.textarea1{
-    width: 80%;
-    max-width: 590px;
-    margin: 230px 0 20px 400px;
-    font-family: "Segoe UI", serif;
-    position: relative;
-    left: 40px;
-}
-
-.about_back1{
-    position: absolute;
-    float: right;
-    left: 20%;
-    width: 350px;
-    height: 500px;
-    margin: 0 0 150px 0;
-    background-image: url("../img/bg1.jpg");
-    background-position: center center;
-}
-
-h2.aboutttl1{
-    text-align: left;
-    margin: 80px 0 50px 0;
-    padding: 70px 0 0px 0;
-    font-size: 70px;
-    font-weight: bold;
-    color: #CD3C45;
-    font-family: "Niagara Engraved", sans-serif;
-}
-
-
-h2.aboutttl2{
-    display: block;
-    float: left;
-    margin: 0 40px 100px 0;
-    padding-top: 0;
-    font-size: 50px;
-    font-weight: lighter;
-    writing-mode: vertical-rl;
-    color: #ADADAD;
-}
-
-h3.subcopy{
-    text-align: left;
-    position: relative;
-    margin: 0 0 20px 0;
-    line-height: 1.4em;
-    font-size: 22px;
-    font-weight: bold;
-    font-family: "Segoe UI";
-    color: #000;
-}
-
-p.txt{
-    position: relative;
-    margin: 0 0 0 80px;
-    font-size: 17px;
-    line-height: 185%;
-}
-
-.about_back{
-    position: relative;
-    float: right;
-    width: 350px;
-    height: 500px;
-    margin: 0 0;
-    background-image: url("../img/bg1.jpg");
-    background-position: center center;
-}
-
-img#aboutimg{
-    max-width: 100%;
-    position: absolute;
-    top: 100px;
-    right: 180px;
-    box-shadow: 0 3px 8px #999;
-}
-
-
-
-/*Wave*/
-svg {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    bottom: 0;
-}
-.wavecontainer {
-    display: inline-block;
-    position: absolute;
-    width: 100%;
-    height: 700px;
-    padding-bottom: 100%;
-    vertical-align: middle;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-}
-
-.list-mv01{
-    transition: .8s;
-    opacity: 0;
-    transform: translate(0,60px);
-    -webkit-transform: translate(0,60px);
-    }
-.mv01{
-    opacity: 1.0;
-    transform: translate(0,0);
-    -webkit-transform: translate(0,0);
-    }
-
-
-
-/*Delivery*/
-#deli{
-    width: 100%;
-    margin: 0 0 40px 0;
-    font-family: "Segoe UI", serif;
-}
-
-img#deliimg{
-    max-width: 100%;
-    display: block;
-    margin-bottom: 60px;
-    box-shadow: 0 3px 8px #999;
-}
-
-
-.deli_back{
-    position: absolute;
-    float: left;
-    width: 340px;
-    margin: 0 100px 0 0 0;
-    background-position: center center;
-}
-
-ul.delilist{
-    width: 115%;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.delilist li{
-    flex: 1 1 25%;
-    height: auto;
-    align-items: center;
-}
-
-.delilist img{
-    max-width: 100px;
-}
-
-li#lasticon{
-    max-height: 10%;
-}
-
-.delilist img:hover{
-    transition: .3s;
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-    }
-
-h2.delittl1{
-    text-align: left;
-    margin: 80px 0 50px 0;
-    padding: 70px 0 0px 0;
-    font-size: 70px;
-    font-weight: bold;
-    color: #006CA8;
-    font-family: "Niagara Engraved", sans-serif;
-}
-
-h2.delittl2{
-    display: block;
-    float: left;
-    margin: 0 40px 100px 0;
-    padding-top: 0;
-    font-size: 50px;
-    font-weight: lighter;
-    writing-mode: vertical-rl;
-    color: #ADADAD;
-    position: relative;
-    left: 50%;
-}
-
-
-table{
-    position: relative;
-    width: 40%;
-    left: 50%;
-    max-width: 590px;
-    line-height: 185%;
-    font-family: "Segoe UI";
-}
-
-th{
-    font-size: 21px;
-    font-weight: bold;
-    line-height: 200%;
-}
-
-td{
-    font-size: 21px;
-    line-height: 185%;
-}
-
-
-/*Map*/
-.gmap{
-    width: 100%;
-    height: 330px;
-}
-
-/*Gallery*/
-#gallery{
-    max-width: 1685px;
-    margin: 100px 20px 0 90px;
-    height: 700px;
-    font-family: "Segoe UI", serif;
-    justify-content: center;
-    align-items: center;
 }
 
 ul.gal{
@@ -785,38 +283,102 @@ ul.gal{
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
-    }
+}
 
 
-h2.galttl1{
+/*Section2-4*/
+
+.slide-container{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-color: #F8F8F8;
+}
+
+.left-slide{
+    height: 100vh;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.left-slide > div{
+    height: 100%;
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-slide{
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+}
+
+.right-slide > div{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.right-slide div> p{
+    width: 400px;
+    height: 80vh;
+    font-size: 18px;
+    line-height: 30px;
+    padding-top: 5%;
+}
+
+h1.subcopy{
+    padding-top: 50px;
+    align-content: center;
+    margin: 37px auto;
+    line-height: 60px;
     font-size: 70px;
     font-weight: bold;
-    color: #722418;
-    margin: 30px 0;
-    padding: 20px 80px 50px 0;
-    font-family: "Niagara Engraved", sans-serif;
+    color: #000;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    z-index: 100;
 }
 
-img#gal_deco{
-    float: inherit;
-    margin-left: 10px;
-    margin-right: 20px;
-    max-width: 75px;
+.action-buttons{
+    position: absolute;
+    right: 15%;
+    top: 80%;
+    z-index: 1;
+    border: none;
+    width: 115px;
+    padding: 12px;
+    margin: 0 10px;
+    cursor: pointer;
+    outline: none;
+    font-size: 18px;
+    border-radius: 30px;
+    background: #000;
+    color: #fff;
 }
 
-h2.galttl2{
-    display: flex;
-    float: right;
-    margin: 0 30px 20px 20px;
-    padding-top: 0;
-    font-size: 50px;
-    font-weight: lighter;
-    writing-mode: vertical-rl;
-    color: #ADADAD;
+#up-button{
+    transform: translateX(-120%);
 }
+
+.action-buttons:hover{
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+
 
 
 /*Footer*/
@@ -842,27 +404,6 @@ img#footer_logo{
     margin: 50px auto 15px;
 }
 
-
-
-/*下層ページ共通*/
-
-#second_page{
-    width: 85%;
-    max-width: 1600px;
-    margin: 0 auto;
-}
-
-.midashi_second{
-    text-align: center;
-    margin: 51px 0 68px 0;
-    font-size: 33px;
-    font-weight: bold;
-    color: #0ABE4D;
-}
-
-.now{
-    color: #AED32D !important;
-}
 
 
 
