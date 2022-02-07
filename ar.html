@@ -102,9 +102,15 @@
 
           let url = new URL(window.location.href);
           let params = url.searchParams;
-          console.log(params);
+          let resultData = [];
+          for (const [key, value] of params) {
+            console.log(key, value);
+            let obj = new Object();
+            obj[key] = value;
+            resultData.push(obj);
+          }
 
-          params.forEach((x) => console.log(x, keys(x)));
+          console.log(resultData);
           let modelPath;
           let modelParams = [
             { name: 'frame', color: '0x' + params.get('Waku') },
