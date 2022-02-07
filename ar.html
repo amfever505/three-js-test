@@ -19,13 +19,11 @@
     <script src="https://cdn.rawgit.com/mrdoob/three.js/r122/examples/js/loaders/GLTFLoader.js"></script>
     <!-- ar.js -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.1.0/three.js/build/ar.js"></script>
-    <script src="./3D/modelData.js"></script>
+    <!-- <script src="./3D/modelData.js"></script> -->
 
     <script>
       // パラメーターを取得
-      // import products from './3D/modelData.js';
-      // import * as modelData from './modelData.js';
-      console.log(products);
+
       var url = new URL(window.location.href);
       var params = url.searchParams;
       console.log(params);
@@ -128,7 +126,7 @@
             console.log(modelPath);
             // modelPath = '/frame2_golden_379_288.glb';
           } else {
-            modelPath = '/frame2_golden_509_394.glb';
+            modelPath = '3D/model/frame2_golden_379_288.glb';
           }
 
           let loader = new THREE.GLTFLoader();
@@ -139,10 +137,12 @@
             // object
             //   .getObjectByName(modelData[1][1])
             //   .material.color.setHex(modelData[1][2]);
-            let customizeObj = params.get('id'); //パラメーターから変更の名前取得
-            let customizeColor = modelParams[0].color; //パラメーターからカスタマイズカラー取得
+            // let customizeObj = params.get('id');
+            //パラメーターから変更の名前取得
+            // let customizeColor = modelParams[0].color;
+            //パラメーターからカスタマイズカラー取得
 
-            object.getObjectByName(w).material.color.setHex(c);
+            // object.getObjectByName(w).material.color.setHex(c);
 
             // object.scale.set(size, size, size);
             object.position.set(0, 0, 1);
