@@ -6,7 +6,7 @@ import * as modelData from './modelData.js';
 let model;
 
 async function init(url) {
-  const canvas = document.querySelector('#model-preview');
+  const canvas = document.querySelector('#c');
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -14,7 +14,7 @@ async function init(url) {
   });
   const scene = new THREE.Scene();
   // scene.background = new THREE.Color('white');
-  renderer.setClearColor(0xffffff, 1);
+  renderer.setClearColor(0xf9f9f9, 1);
 
   const width = 640;
   const height = 480;
@@ -29,10 +29,13 @@ async function init(url) {
   // ライティング
   renderer.shadowMap.enabled = true;
   const light = new THREE.AmbientLight(0xffffff, 1);
-  const spotlight = new THREE.SpotLight(0xffffff, 2, 200, Math.PI / 2, 1, 2);
+  const spotlight = new THREE.SpotLight(0xffffff, 1, 200, 1, 1, 2);
   spotlight.castShadow = true;
-  spotlight.position.set(0, 0, 60);
-  scene.add(spotlight);
+  spotlight.position.set(50, 0, 30);
+  const leftlight = new THREE.SpotLight(0xffffff, 1, 200, 1, 1, 2);
+  leftlight.position.set(-50, 0, 30);
+
+  scene.add(spotlight, leftlight);
   scene.add(light);
   renderer.outputEncoding = THREE.GammaEncoding;
 
@@ -52,26 +55,52 @@ async function init(url) {
     });
   })();
 
-  // カスタマイズ
-  const WakuPicker = document.querySelector('#waku');
-  const UraPicker = document.querySelector('#ura');
-  const Waku = model.getObjectByName('frame').material;
-  const Ura = model.getObjectByName('ura').material;
-  const Canvas = model.getObjectByName('canvas').material;
-  model.getObjectByName('ura').visible = false;
+  // カスタマイズ　箇所の指定など
+
+  // 全モデルのキャンバスはこうしなくちゃいけない
+  const Canvas = model.getObjectByName('canvas_平面').material;
+
+  let customizeObj = '';
+  let customizeMoyou = '';
+  let Picker = [];
+  // カラー変更のエリアを作る
+  MDL.object.forEach((item, index) => {
+    customizeObj += `${item.name} <input type="color" id="${item.name}" value="${item.color}" />`;
+    Picker[index] = [item.name, item.value];
+  });
+  $('#color-area').html(customizeObj);
+
+  // 模様変更のエリアを作る
+  if (MDL.moyou.length > 0) {
+    customizeMoyou = '模様のオプション';
+    MDL.moyou.forEach((item) => {
+      customizeMoyou += `<br><label> <input type="checkbox" id="${item.value}" class="moyouOption" checked>${item.name}</label>`;
+    });
+  }
+  $('#moyou-area').html(customizeMoyou);
+
+  // カラーピッカーのイベントハンドラー
+  $('.moyouOption').on('change', function () {
+    model.getObjectByName($(this)[0].id).material.visible = !model.getObjectByName($(this)[0].id).material.visible;
+  });
+  // $('#moyou001_Lines001').on('change', (target) => {
+  //   console.log(target);
+  // });
+
+  Picker.forEach((x) => {
+    $('#' + x[0]).on('change', function () {
+      let color =
+        '0x' +
+        $('#' + x[0])
+          .val()
+          .slice(1);
+      x[1].forEach((val) => model.getObjectByName(val).material.color.setHex(color));
+    });
+  });
   model.traverse((object) => {
     if (object.isMesh) {
       object.material.transparent = true;
     }
-
-    WakuPicker.addEventListener('change', (e) => {
-      let color = '0x' + WakuPicker.value.slice(1);
-      Waku.color.setHex(color);
-    });
-    UraPicker.addEventListener('change', (e) => {
-      let color = '0x' + UraPicker.value.slice(1);
-      Ura.color.setHex(color);
-    });
   });
   //位置調整
   const box = new THREE.Box3().setFromObject(model);
@@ -80,8 +109,31 @@ async function init(url) {
   // const modelD = box.max.z - box.min.z;
 
   // texture変更
-  var filechange = document.getElementById('file');
-  filechange.addEventListener('change', textureSwitch, false);
+  // var filechange = document.getElementById('file');
+  // filechange.addEventListener('change', textureSwitch, false);
+
+  var img = document.createElement('img');
+  img.src = '/001.jpg';
+
+  // テクスチャの更新（meshは作成済みのオブジェクト）
+  Canvas.side = THREE.doubleSide;
+  Canvas.map = new THREE.Texture(img);
+  Canvas.map.needsUpdate = true;
+
+  // 写真プレビューを切る
+  const imgPreview = $('#image-preview');
+  imgPreview.on('click', () => {
+    if (!imgPreview.prop('checked')) {
+      img.src = '/000.jpg';
+    } else {
+      img.src = '/001.jpg';
+    }
+    Canvas.map = new THREE.Texture(img);
+    Canvas.map.needsUpdate = true;
+  });
+
+  // Canvas.map = null;
+  // Canvas.map.needsUpdate = true;
 
   function textureSwitch(event) {
     // 要素内イベントのキャンセル
@@ -99,7 +151,7 @@ async function init(url) {
       img.src = event.target.result;
 
       // テクスチャの更新（meshは作成済みのオブジェクト）
-      // Canvas.side = THREE.DoubleSide;
+      Canvas.side = THREE.DoubleSide;
       Canvas.map = new THREE.Texture(img);
       Canvas.map.needsUpdate = true;
       console.log(Canvas.map);
@@ -109,9 +161,30 @@ async function init(url) {
   }
   // 位置設定
   model.position.set(-modelW / 60, -modelH / 10, -25);
-  console.log(modelW / camera.position.z);
 
-  model.scale.set(0.2, 0.2, 0.2);
+  // const Tate = document.querySelector('#tate');
+  // const Yoko = document.querySelector('#Yoko');
+  let Direction = 'tate';
+  $('#tate').on('click', () => {
+    Direction = 'tate';
+    directionChange(Direction);
+  });
+  $('#yoko').on('click', () => {
+    Direction = 'yoko';
+    directionChange(Direction);
+    console.log(Direction);
+  });
+  function directionChange() {
+    if (Direction == 'tate') {
+      model.rotation.set(0, 0, Math.PI / 2);
+    } else {
+      model.rotation.set(0, 0, 0);
+    }
+  }
+
+  // console.log(modelW / camera.position.z);
+
+  model.scale.set(MDL.scale, MDL.scale, MDL.scale);
   scene.add(model);
   // いらないかも？
   renderer.setAnimationLoop(tick);
@@ -124,7 +197,7 @@ async function init(url) {
 
   arBtn.addEventListener('click', (e) => {
     // idとりあえず1でお試し
-    arLink = arLink + 'id=1&Waku=' + WakuPicker.value.slice(1) + '&Ura=' + UraPicker.value.slice(1);
+    arLink = arLink + 'id=' + MDL.id + '&param';
     console.log(arLink);
     $(function () {
       var qrtext = arLink;
@@ -146,26 +219,41 @@ async function init(url) {
   }
 
   // Mesh であるやつを取得
-  // console.log(model.children);
-  // console.log(modelData.products[0]);
+  console.log(model.children);
+  // console.log(modelData.products[0].name);
 }
-
-let url = '3D/model/frame2_golden_509_394.glb';
+// モデル切り替え
+let MDL = modelData.products[0];
+console.log();
+$('.modelicon').on('click', function () {
+  let ID = Number($(this).attr('id'));
+  MDL = modelData.products[ID];
+  setUrl();
+  // init(url);
+  console.log(`モデル${ID}`, url);
+});
+// デフォルトのモデルパス！
+let url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
+function setUrl() {
+  url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
+  init(url);
+}
 // 初期化
 window.addEventListener('load', init(url));
 const resetBtn = document.querySelector('#resetBtn');
 resetBtn.addEventListener('click', () => {
   init(url);
 });
+
 // サイズ切り替え
-const modelNo = document.querySelector('#model-no');
+const modelNo = document.querySelector('#size-selector');
 modelNo.addEventListener('change', (e) => {
-  if (modelNo.value == 1) {
-    url = '3D/model/frame2_golden_379_288.glb';
-  } else if (modelNo.value == 2) {
-    url = '3D/model/frame2_golden_509_394.glb';
-  } else if (modelNo.value == 3) {
-    url = '3D/model/frame2_golden_606_455.glb';
+  if (modelNo.value == 'sm') {
+    url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
+  } else if (modelNo.value == 'md') {
+    url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
+  } else if (modelNo.value == 'lg') {
+    url = '3D/model/' + MDL.name + '_' + MDL.lg + '.glb';
   }
   init(url);
 });

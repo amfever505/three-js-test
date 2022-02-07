@@ -1,28 +1,88 @@
-jQuery(function($) {
-    $('.parallax-mv').parallax({imageSrc: 'img/mv.jpg'});
+//Login
 
-    $('.bg-slider').bgSwitcher({
-    images: ['img/mainvisual.jpg','img/mainvisual2.jpg','img/mainvisual3.jpg'], // 切替背景画像を指定
-    interval: 3000, // 背景画像を切り替える間隔を指定 3000=3秒
-    loop: true, // 切り替えを繰り返すか指定 true=繰り返す　false=繰り返さない
-    shuffle: true, // 背景画像の順番をシャッフルするか指定 true=する　false=しない
-    effect: "fade", // エフェクトの種類をfade,blind,clip,slide,drop,hideから指定
-    duration: 500, // エフェクトの時間を指定します。
-    easing: "swing" // エフェクトのイージングをlinear,swingから指定
-    });
+    var Panels = (function() {
+  
+        var panelLeft = document.querySelector('.panels__side--left');
+        var panelRight = document.querySelector('.panels__side--right');
 
-    });
+        var loginBtn = document.getElementById('btn1a');
+        var signupBtn = document.getElementById('btn1b');
+      
+        var openLeft = function() {
+          panelLeft.classList.toggle('panels__side--left-active');
+          panelRight.classList.toggle('panels__side--right-hidden');
+        };
+      
+        var openRight1 = function() {
+          panelRight.classList.toggle('panels__side--right-active');
+          panelLeft.classList.toggle('panels__side--left-hidden');
+        };
 
-    function() {
-        $(window).on("scroll", function() {
-            if($(window).scrollTop() > 50) {
-                $(".header").addClass("active");
-                console.log(true);
-            } else {
-                //remove the background property so it comes transparent again (defined in your css)
-               $(".header").removeClass("active");
-            }
-        });
-    };
+        var openRight2 = function() {
+          panelRight.classList.toggle('panels__side--right-active');
+          panelLeft.classList.toggle('panels__side--left-hidden');
+        };
+        
+        var bindActions = function() {
+          document.getElementById('btn2').addEventListener('click', openLeft, false);
+          loginBtn.addEventListener('click', openRight1, false);
+          signupBtn.addEventListener('click', openRight2, false);
+        };
+        
+        var init = function() {
+          bindActions();
+        };
+        
+        return {
+          init: init
+        };
+       
+      }());
+      
+      Panels.init();
+
+      const $loginBtn = $("#btn1a");
+      const $loginCtn = $("#ctn1");
+
+      const $signupBtn = $("#btn1b");
+      const $signupCtn = $("#ctn2");
+
+      const $passBtn = $("#btn3");
+      const $passCtn = $("#ctn3");
+
+      const $customBtn = $("#btn2");
+
+      $('.login_area2_content').hide();
+
+      $loginBtn.on("click",login);
+      function login(){
+        $loginCtn.show();
+        $signupCtn.hide();
+        $passCtn.hide();
+      }
+
+      $signupBtn.on("click",signup);
+      function signup(){
+        $signupCtn.show();
+        $loginCtn.hide();
+        $passCtn.hide();
+      }
+
+      $passBtn.on("click",password);
+      function password(){
+        $passCtn.show();
+        $loginCtn.hide();
+        $signupCtn.hide();
+      }
+
+      $customBtn.on("click",redirect);
+
+      function redirect(){setTimeout(function (){
+        location.href="custom.html";
+      },1000);
+    }
+
+      
+      
 
     
