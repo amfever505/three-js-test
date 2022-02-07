@@ -22,6 +22,8 @@
 
     <script>
       // パラメーターを取得
+      import * as modelData from './modelData.js';
+
       var url = new URL(window.location.href);
       var params = url.searchParams;
       console.log(params);
@@ -103,12 +105,12 @@
           let url = new URL(window.location.href);
           let params = url.searchParams;
           let resultData = [];
+          let obj = new Object();
+
           for (const [key, value] of params) {
-            console.log(key, value);
-            let obj = new Object();
             obj[key] = value;
-            resultData.push(obj);
           }
+          resultData.push(obj);
 
           console.log(resultData);
           let modelPath;
