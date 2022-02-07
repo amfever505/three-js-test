@@ -148,13 +148,13 @@
             object.position.set(0, 0, -0.2);
             object.rotation.set(-(Math.PI / 2), 0, 0);
             marker.add(object);
+            const box = new THREE.Box3().setFromObject(object);
+            const modelW = box.max.x - box.min.x;
+            const modelH = box.max.y - box.min.y;
+            const modelD = box.max.z - box.min.z;
+            console.log(modelW, modelH, modelD);
           });
 
-          const box = new THREE.Box3().setFromObject(model);
-          const modelW = box.max.x - box.min.x;
-          const modelH = box.max.y - box.min.y;
-          const modelD = box.max.z - box.min.z;
-          console.log(modelW, modelH, modelD);
           // videoTexture モデルロードした後、コードを消す
           // const videoTexture = new THREE.VideoTexture(source.domElement);
           // videoTexture.minFilter = THREE.NearestFilter;
