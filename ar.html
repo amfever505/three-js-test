@@ -103,6 +103,8 @@
           let url = new URL(window.location.href);
           let params = url.searchParams;
           console.log(params);
+
+          params.forEach((x) => x);
           let modelPath;
           let modelParams = [
             { name: 'frame', color: '0x' + params.get('Waku') },
@@ -127,11 +129,12 @@
             // object
             //   .getObjectByName(modelData[1][1])
             //   .material.color.setHex(modelData[1][2]);
-            let w = modelParams[0].name; //パラメーターから変更の名前取得
-            let c = modelParams[0].color; //パラメーターからカスタマイズカラー取得
+            let customizeObj = params.get('id'); //パラメーターから変更の名前取得
+            let customizeColor = modelParams[0].color; //パラメーターからカスタマイズカラー取得
+
             object.getObjectByName(w).material.color.setHex(c);
 
-            object.scale.set(size, size, size);
+            // object.scale.set(size, size, size);
             object.position.set(0, 0, 1);
             object.rotation.set(-(Math.PI / 2), 0, 0);
             marker.add(object);
