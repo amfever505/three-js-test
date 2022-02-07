@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FARME | Custom</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style-custom.css">
+    <link rel="stylesheet" href="js/scrollCue.css">
+
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--JQueryPlugin-->
+    <script src="js/jquery.bgswitcher.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/scrollCue.min.js"></script>
+    <script src="js/vendors/scrolloverflow.min.js"></script>
+    <script src="js/vendors/easings.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inview/1.0.0/jquery.inview.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
+    <!--m+-->
+    <link rel="stylesheet" type="text/css"
+        href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css%22%3E">
+    <link rel="stylesheet" type="text/css"
+        href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css%22%3E">
+
+    <!--Poiret One-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+
+    <!-- 3D, ar.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.2/three.js/build/ar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+</head>
+
+<body>
+    <div class="custom-top">
+        <img src="images/logo.png" alt="logo" class="logo">
+
+        <div class="main_txt">
+            <h1>START<br><br>YOUR CREATION</h1>
+            <p>額縁の世界は、あなたの創造心で作り上げていきます。</p>
+            <br>
+            <h2>売りポイント</h2>
+            <p>ダミーダミーダミーダミーダミーダミーダミーダミーダミー。</p>
+        </div>
+    </div><!--top-->
+
+    <div class="wrap">
+    <nav class="nav">
+        <div id="steps">
+            <ul>
+                <li><a href="#step1">Step 1</a></li>
+                <li><a href="#step2">Step 2</a></li>
+                <li><a href="#step2">Step 3</a></li>
+                <li><a href="#step3">Step 4</a></li>
+             </ul>
+        </div>
+    </nav>
+    
+    <main class="main">
+    
+    <div class="wrapper">
+        <div class="section1" id="step1">
+            <h1 class="subcopy">Choose your style</h1>
+            <h2 class="menuttl">01</h2>
+                <ul class="gal">
+                    <li>
+                    <img src="images/model1.png" alt="写真1">
+                    </li>
+                    <li>
+                    <img src="images/model2.jpg" alt="写真1">
+                    </li>
+                    <li>
+                    <img src="images/model3.png" alt="写真1">
+                    </li>
+                    <li>
+                    <img src="images/model4.jpg" alt="写真1">
+                    </li>
+                    <li>
+                    <img src="images/model5.jpg" alt="写真1">
+                    </li>
+                    <li>
+                    <img src="images/model6.png" alt="写真1">
+                    </li>
+                </ul>
+            <ul class="menu1" data-cues="slideInUp" data-group="images">
+                <li>
+                <p class="cap1">まずは好きな枠の形を選んでね。</p>
+                <img src="images/mascot.png" alt="live2d">
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section2" id="step2">
+          <h1 class="subcopy">Choose your size</h1>
+           <div class="section2 left">
+            <canvas id="model-preview" style="width: 500px; height: 500px"></canvas>
+           </div>
+           <div class="section2 right">
+            <div class="menu">
+                <p>
+                Size:<select name="size" id="model-no">
+                    <option value="1">小</option>
+                    <option value="2" selected>中</option>
+                    <option value="3">大</option>
+                </select><br>
+                Direction: <img src="images/icon3.png" id="menu_deco1"><img src="images/icon4.png" id="menu_deco2">
+                </p>
+            </div>
+            <br>
+            <div class="menu">
+                <p>
+                Color:<br>
+                枠 <input type="color" id="waku" value="#9a760f"/>
+                裏 <input type="color" id="ura" value="#d2a77e"/>
+                <input id="file" type="file">
+                </p>
+            </div>
+            <br>
+            <div class="menu">
+                <p>
+                <button id="arBtn">ARで見る</button>
+                <button id="resetBtn">リセット</button>
+                <div id="qr"></div>
+                </p>
+            </div>
+                <ul class="menu" data-cues="slideInUp" data-group="images">
+                    <li>
+                    <p class="cap">次は大きさや比率を決めていくよ。</p>
+                    <img src="images/mascot.png" alt="live2d">
+                    </li>
+                    <!-- <li>
+                        <p class="cap">次は色だね。カラーパレットの「スポイト」を使って、<br>
+                            取り込んだ画像の色を使うこともできるよ。</p>
+                    </li>
+                    <li>
+                        <p class="cap">完成！君だけの額縁ができたね！<br>良かったらQRコードを読み込んで、確認してみてよ。</p>
+                    </li> -->
+                </ul>
+           </div>
+           
+        </div>
+        
+    
+        <div class="section3 right">
+            <h3 class="subcopy3">Choose your color</h3>
+            <h2 class="menuttl3">03</h2>
+            
+            <ul class="menu" data-cues="slideInUp" data-group="images">
+                
+                <li>
+                    <p class="cap1">Material</p>
+                </li>
+                <li>
+                    <p class="cap1">Color</p>
+                    枠 <input type="color" id="waku" value="#9a760f" />
+                    裏 <input type="color" id="ura" value="#d2a77e" />
+                </li>
+            </ul>
+            </div>
+            <div class="section3 left">
+                <img src="img/menu3.png" class="menuimg" alt="写真1" data-cue="slideInLeft" data-duration="800">
+            </div>
+
+        <div class="section4 right" id="step3">
+            <h3 class="subcopy3">Preview your frame</h3>
+            <h2 class="menuttl3">04</h2>
+                
+            <ul class="menu" data-cues="slideInUp" data-group="images">
+                <li>
+                <p class="cap">完成！君だけの額縁ができたね！<br>良かったらQRコードを読み込んで、確認してみてよ。</p>
+                </li>
+                <li>
+                     <p class="cap1">QRコード</p>
+                     <div>
+                        <button id="arBtn">ARで見る</button>
+                        <div id="qr"></div>
+                      </div>
+                </li>
+            </ul>
+        </div>
+        <div class="section4 left">
+            
+        </div>
+
+    
+    </div><!--menu-->
+    
+    </main>
+    </div> <!--wrap-->
+    
+    <footer>
+        <a href="index.html"><img src="images/logo.png" alt="ロゴ" id="footer_logo"></a>
+        <p class="copyright">Copyright &copy; 2021 FRAME All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        $('.parallax-mv').parallax({imageSrc: 'img/menu1.jpg'});
+    
+        $(window).on("scroll", function() {
+                if($(window).scrollTop() > 2100) {
+                    $(".nav").addClass("active");
+                    console.log(true);
+                } else {
+                    //remove the background property so it comes transparent again (defined in your css)
+                   $(".nav").removeClass("active");
+                };
+            });
+        
+        var $root = $('html, body');
+        $('a[href^="#"]').click(function () {
+        $root.animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top
+        }, 1500);
+    
+        return false;
+    });
+    </script>
+    
+    <script>
+    
+        $(window).on("scroll", function() {
+                if($(window).scrollTop() > 3000) {
+                    $(".nav").addClass("active1");
+                    console.log(true);
+                } else {
+                    //remove the background property so it comes transparent again (defined in your css)
+                   $(".nav").removeClass("active1");
+                };
+            });
+        
+        var $root = $('html, body');
+        $('a[href^="#"]').click(function () {
+        $root.animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top
+        }, 1500);
+    
+        return false;
+    });
+    </script>
+    
+    <script>
+    
+        $(window).on("scroll", function() {
+                if($(window).scrollTop() > 4100) {
+                    $(".nav").addClass("active2");
+                    console.log(true);
+                } else {
+                    //remove the background property so it comes transparent again (defined in your css)
+                   $(".nav").removeClass("active2");
+                };
+            });
+        
+        var $root = $('html, body');
+        $('a[href^="#"]').click(function () {
+        $root.animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top
+        }, 1500);
+    
+        return false;
+    });
+    </script>
+    
+    <script>
+        $(function() {
+        $('.list-mv01').on('inview', function(event, isInView, visiblePartX, visiblePartY) {
+        if(isInView){
+        $(this).stop().addClass('mv01');
+        }
+        else{
+        $(this).stop().removeClass('mv01');
+        }
+        });
+        });
+    </script>
+    
+    <script>scrollCue.init();</script>
+    
+    <script>
+    
+    ScrollReveal().reveal('#about', { 
+        duration: 2000, 
+        origin: 'right', 
+        distance: '50px',
+        reset: true   
+      });
+    
+    ScrollReveal().reveal('#deli', { 
+        duration: 2000, 
+        origin: 'left', 
+        distance: '50px',
+        reset: true   
+      });
+    
+    ScrollReveal().reveal('.subcopy1', { 
+        duration: 2000, 
+        origin: 'left', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    ScrollReveal().reveal('.menuttl1', { 
+        duration: 2000, 
+        origin: 'left', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    ScrollReveal().reveal('.subcopy', { 
+        duration: 2000, 
+        origin: 'right', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    ScrollReveal().reveal('.menuttl', { 
+        duration: 2000, 
+        origin: 'right', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    ScrollReveal().reveal('.menu', { 
+        duration: 2000, 
+        origin: 'right', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    ScrollReveal().reveal('.subcopy3', { 
+        duration: 2000, 
+        origin: 'left', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    ScrollReveal().reveal('.menuttl3', { 
+        duration: 2000, 
+        origin: 'left', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    ScrollReveal().reveal('.menu1', { 
+        duration: 2000, 
+        origin: 'left', 
+        distance: '50px',
+        reset: true   
+    });
+    
+    
+    </script>
+    
+    <!-- 3D script -->
+    <script src="3D/three.min.js"></script>
+    <script type="module" src="3D/GLTFLoader.js"></script>
+
+    <script type="module" src="3D/model.js"></script>
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js%22%3E</script>
+    
+
+</body>
+
+</html>
