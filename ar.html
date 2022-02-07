@@ -111,8 +111,9 @@
           ];
           //   モデルデータ読み込み・切り替え
           if (params.get('id') == 1) {
-            modelPath = '3D/model/frame2_golden_379_288.glb';
-
+            let modelSize = params.get('size');
+            modelPath = '3D/model/frame00' + params.get('id') + '_' + modelSize + '.glb';
+            console.log(modelPath);
             // modelPath = '/frame2_golden_379_288.glb';
           } else {
             modelPath = '/frame2_golden_509_394.glb';

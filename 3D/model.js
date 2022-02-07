@@ -63,29 +63,31 @@ async function init(url) {
   let customizeObj = '';
   let customizeMoyou = '';
   let Picker = [];
+  let moyouResults = [];
+
   // カラー変更のエリアを作る
   MDL.object.forEach((item, index) => {
     customizeObj += `${item.name} <input type="color" id="${item.name}" value="${item.color}" /><br>`;
-    Picker[index] = [item.name, item.value];
+    Picker[index] = [item.name, item.value, '0x' + item.color.slice('1')];
   });
   $('#color-area').html(customizeObj);
 
   // 模様変更のエリアを作る
   if (MDL.moyou.length > 0) {
     customizeMoyou = '模様：';
-    MDL.moyou.forEach((item) => {
-      customizeMoyou += `<br><label> <input type="checkbox" id="${item.value}" class="moyouOption" checked>${item.name}</label>`;
+    MDL.moyou.forEach((item, index) => {
+      customizeMoyou += `<br><label> <input type="checkbox" id="${item.value}" name="${index}" class="moyouOption" checked>${item.name}</label>`;
+      moyouResults.push(true);
     });
   }
   $('#moyou-area').html(customizeMoyou);
-
-  // カラーピッカーのイベントハンドラー
   $('.moyouOption').on('change', function () {
     model.getObjectByName($(this)[0].id).material.visible = !model.getObjectByName($(this)[0].id).material.visible;
+
+    moyouResults[$(this)[0].name] = $(this).prop('checked');
+    console.log(moyouResults);
   });
-  // $('#moyou001_Lines001').on('change', (target) => {
-  //   console.log(target);
-  // });
+  // カラーピッカーのイベントハンドラー
 
   Picker.forEach((x) => {
     $('#' + x[0]).on('change', function () {
@@ -95,8 +97,10 @@ async function init(url) {
           .val()
           .slice(1);
       x[1].forEach((val) => model.getObjectByName(val).material.color.setHex(color));
+      x[2] = color;
     });
   });
+
   model.traverse((object) => {
     if (object.isMesh) {
       object.material.transparent = true;
@@ -161,7 +165,7 @@ async function init(url) {
 
   // const Tate = document.querySelector('#tate');
   // const Yoko = document.querySelector('#Yoko');
-  let Direction = 'tate';
+  let Direction = 'yoko';
   $('#tate').on('click', () => {
     Direction = 'tate';
     directionChange(Direction);
@@ -169,7 +173,6 @@ async function init(url) {
   $('#yoko').on('click', () => {
     Direction = 'yoko';
     directionChange(Direction);
-    console.log(Direction);
   });
   function directionChange() {
     if (Direction == 'tate') {
@@ -194,7 +197,20 @@ async function init(url) {
 
   arBtn.addEventListener('click', (e) => {
     // idとりあえず1でお試し
-    arLink = arLink + 'id=' + MDL.id + '&param';
+
+    let Param = [{ id: MDL.id }, { size: modelNo.value }, { dir: Direction }, { moyou: moyouResults }];
+    Picker.forEach((x) => {
+      let obj = new Object();
+      obj[x[0]] = x[2];
+      Param.push(obj);
+    });
+
+    let urlParam = '';
+    Param.forEach((x) => {
+      urlParam += Object.keys(x) + '=' + Object.values(x) + '&';
+    });
+
+    arLink = arLink + urlParam;
     console.log(arLink);
     $(function () {
       var qrtext = arLink;
@@ -205,6 +221,7 @@ async function init(url) {
 
     arLink = 'https://farme-test.herokuapp.com/ar.html?';
   });
+
   // アニメーション関連
   function tick() {
     controls.update();
@@ -244,7 +261,7 @@ resetBtn.addEventListener('click', () => {
 
 // サイズ切り替え
 const modelNo = document.querySelector('#size-selector');
-console.log($('#size-selector'));
+
 modelNo.addEventListener('change', (e) => {
   console.log('change', modelNo.value);
   if (modelNo.value == 'sm') {
