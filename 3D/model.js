@@ -65,14 +65,14 @@ async function init(url) {
   let Picker = [];
   // カラー変更のエリアを作る
   MDL.object.forEach((item, index) => {
-    customizeObj += `${item.name} <input type="color" id="${item.name}" value="${item.color}" />`;
+    customizeObj += `${item.name} <input type="color" id="${item.name}" value="${item.color}" /><br>`;
     Picker[index] = [item.name, item.value];
   });
   $('#color-area').html(customizeObj);
 
   // 模様変更のエリアを作る
   if (MDL.moyou.length > 0) {
-    customizeMoyou = '模様のオプション';
+    customizeMoyou = '模様：';
     MDL.moyou.forEach((item) => {
       customizeMoyou += `<br><label> <input type="checkbox" id="${item.value}" class="moyouOption" checked>${item.name}</label>`;
     });
@@ -230,9 +230,9 @@ $('.modelicon').on('click', function () {
   console.log(`モデル${ID}`, url);
 });
 // デフォルトのモデルパス！
-let url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
+let url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
 function setUrl() {
-  url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
+  url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
   init(url);
 }
 // 初期化
@@ -244,7 +244,9 @@ resetBtn.addEventListener('click', () => {
 
 // サイズ切り替え
 const modelNo = document.querySelector('#size-selector');
+console.log($('#size-selector'));
 modelNo.addEventListener('change', (e) => {
+  console.log('change', modelNo.value);
   if (modelNo.value == 'sm') {
     url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
   } else if (modelNo.value == 'md') {

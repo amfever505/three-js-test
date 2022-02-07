@@ -66,7 +66,7 @@ p{
   right: 0;
   top: 0;
   bottom: 0;
-  height: 800px;
+  height: 100vh;
   z-index: -50;
 }
 
@@ -75,6 +75,7 @@ p{
   width: 11%;
   margin: 47px 0 0 48px;
 }
+
 
 .main_txt{
   width: 45%;
@@ -86,6 +87,10 @@ p{
   text-decoration-thickness: 2px;
   line-height: 60px;
   margin-bottom: 30px;
+}
+
+.main_txt p{
+  font-size: 25px;
 }
 
 
@@ -114,7 +119,7 @@ h3{
 
 #int_txtarea_2{
   display: flex;
-  width: 62%;
+  width: 65%;
   margin: 70px 0 0 191px;
 }
 
@@ -123,7 +128,7 @@ h3{
 }
 
 #int_txtarea_2_2{
-  margin: 20px 0 0 0;
+  margin: 40px 0 0 5px;
 }
 
 #int_img{
@@ -137,7 +142,6 @@ h3{
   height: 100vh;
   background-color: #efefef;
   color: rgb(0, 0, 0);
-  display: flex;
   overflow: hidden;
 }
 
@@ -562,11 +566,50 @@ input[type="button"]{
   background: #000;
   color: #fff;
 }
+
 textarea{
     outline: none;
     border: none;
 }
 
+
+/*password*/
+.passlogo{
+  width: 17%;
+  position: absolute;
+  left: 10px;
+  margin: 30px 0 0 20px;
+}
+
+.changepassword{
+  height: 100%;
+  display: flex;
+}
+
+.pass-title{
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.pass-pages{
+  width: 50%;
+  background-color: #3E4F4D;
+  padding: 0 5vw;
+  height: 100vh;
+  align-items: center;
+  float: left;
+  width: 50%;
+  perspective: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.completebtn{
+  margin-left: 22%;
+}
 
 /*team*/
 .team{
@@ -628,7 +671,7 @@ textarea{
 /*techs*/
 .techs{
   width: 100%;
-  height: 80vh;
+  /* height: 80vh; */
   background-color: #efefef;
   color: rgb(0, 0, 0);
   overflow: hidden;
@@ -643,6 +686,56 @@ textarea{
   color: #fff;
 }
 
+#techs_contents {
+  display: flex;
+	flex-direction: column;
+	text-align: center;
+  align-items: center;
+	max-width: 1500px;
+	margin: 0 auto;
+}
+
+.techs_wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 70px 0 80px;
+}
+.techs_item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 70px;
+	border-radius: 10px;
+	margin: 10px 2%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+.techs_item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #000 100%);
+	/* opacity: 0.9; */
+	z-index: -1;
+}
+.techs_item img {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+.techs_item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
 
 
 /*back*/

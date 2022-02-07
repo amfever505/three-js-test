@@ -4,6 +4,8 @@
   
         var panelLeft = document.querySelector('.panels__side--left');
         var panelRight = document.querySelector('.panels__side--right');
+        var arrowLeft = document.querySelector('.loginarrow--left');
+        var arrowRight = document.querySelector('.loginarrow--right');
 
         var loginBtn = document.getElementById('btn1a');
         var signupBtn = document.getElementById('btn1b');
@@ -25,8 +27,11 @@
         
         var bindActions = function() {
           document.getElementById('btn2').addEventListener('click', openLeft, false);
+          arrowLeft.addEventListener('click', openLeft, false);
+
           loginBtn.addEventListener('click', openRight1, false);
           signupBtn.addEventListener('click', openRight2, false);
+          arrowRight.addEventListener('click', openRight2, false);
         };
         
         var init = function() {
@@ -51,8 +56,6 @@
       const $passCtn = $("#ctn3");
 
       const $customBtn = $("#btn2");
-
-      $('.login_area2_content').hide();
 
       $loginBtn.on("click",login);
       function login(){

@@ -8,31 +8,35 @@
 body {
   font-family: "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", YuGothic,sans-serif;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.2;
   color: #000;
-  position:relative
+  position:relative;
 }
 
 
+/*タイトル*/
 h1{
-font-size: 80px;
-font-family: 'Poiret One', cursive;
+  font-size: 80px;
+  font-family: 'Poiret One', cursive;
 }
-
+    
+/*サブタイトル*/
 h2{
   font-size: 30px;
-  font-family: 'M+ P Type-1 (basic latin) Black';
+  font-family: 'Poiret One','M+ P Type-1 (basic latin) Black';
+  padding-bottom: 10px;
 }
-
+    
+/*本文*/
 p{
   font-size: 20px;
-  font-family: 'M+ P Type-1 (basic latin) Black';
+  font-family: 'Poiret One','M+ P Type-1 (basic latin) Black';
 }
 
 .custom-top{
   background-image: url(../images/custombg.png);
   width: 100%;
-  height: 800px;
+  height: 100vh;
   background-size:cover;
   position: relative;
   background-color: #F8F8F8;
@@ -86,9 +90,7 @@ nav.active {
 
 #steps{
     position: fixed;
-    bottom: 700px;
-    left: 10px;
-    margin: 300px 15px 0 50px;
+    top: 25%;
 }
 
 #steps a{
@@ -292,7 +294,7 @@ ul.gal{
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 100vh;
+    height: 115vh;
     background-color: #F8F8F8;
 }
 
@@ -319,23 +321,26 @@ ul.gal{
     position: absolute;
     top: 0;
     left: 50%;
+    /* transition: 1.5s; */
 }
 
 .right-slide > div{
     height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.right-slide div> p{
+.right-slide .options{
     width: 400px;
     height: 80vh;
     font-size: 18px;
     line-height: 30px;
     padding-top: 5%;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 h1.subcopy{
@@ -354,7 +359,7 @@ h1.subcopy{
 .action-buttons{
     position: absolute;
     right: 15%;
-    top: 80%;
+    top: 70%;
     z-index: 1;
     border: none;
     width: 115px;
@@ -368,15 +373,22 @@ h1.subcopy{
     color: #fff;
 }
 
-#up-button{
-    transform: translateX(-120%);
-}
-
 .action-buttons:hover{
     background: #fff;
     color: #000;
     border: 2px solid #000;
 }
+
+#back-button{
+    transform: translateX(-120%);
+}
+
+/* #nextstep1{
+    right: 20%;
+    top: 73%;
+    z-index: 10;
+} */
+
 
 
 
@@ -388,21 +400,25 @@ footer{
     justify-content: center;
     align-items: center;
     clear: both;
+    background-color: #0B0914;
 }
 
 p.copyright{
     display: block;
     text-align: center;
     font-size: 14px;
-    color: #ADADAD;
+    color: #fff;
 }
 
 img#footer_logo{
     display: block;
     align-items: center;
     width: 9%;
-    margin: 50px auto 15px;
+    margin: 0 auto;
+    padding: 35px 0 10px 0;
 }
+
+  
 
 
 

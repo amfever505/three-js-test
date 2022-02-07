@@ -24,18 +24,30 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css%22%3E"
+      href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css%22%3E"
+      href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css"
     />
 
     <!--Poiret One-->
-    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet" />
+
+    <!--slide-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+
+    <!--chara-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--横スクロール-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="js/infiniteslide.js"></script>
+    <script src="js/jquery.pause.min.js"></script>
 
     <!-- 3D, ar.js -->
     <script type="module" src="3D/model.js"></script>
@@ -52,10 +64,10 @@
 
       <div class="main_txt">
         <h1>START<br /><br />YOUR CREATION</h1>
-        <p>額縁の世界は、あなたの創造心で作り上げていきます。</p>
+        <p>想いの形を、あなたの傍に。</p>
         <br />
-        <h2>売りポイント</h2>
-        <p>ダミーダミーダミーダミーダミーダミーダミーダミーダミー。</p>
+        <h2>心の中のイメージを膨らませてください</h2>
+        <p>あなただけの額縁を作っていきましょう。</p>
       </div>
     </div>
     <!--top-->
@@ -82,19 +94,19 @@
                 <a href="#step2" class="modelicon" id="0"><img src="images/model1.png" alt="写真1" /></a>
               </li>
               <li>
-                <a href="#step2" class="modelicon" id="1"><img src="images/model3.png" alt="写真3" /></a>
+                <a href="#step2" class="modelicon" id="1"><img src="images/model3.png" alt="写真1" /></a>
               </li>
               <li>
-                <img src="images/model2.png" alt="写真1" />
+                <a href="#step2" id="nextstep1"><img src="images/model2.png" alt="写真1" /></a>
               </li>
               <li>
-                <img src="images/model4.jpg" alt="写真1" />
+                <a href="#step2" id="nextstep1"><img src="images/model4.jpg" alt="写真1" /></a>
               </li>
               <li>
-                <img src="images/model6.png" alt="写真1" />
+                <a href="#step2" id="nextstep1"><img src="images/model6.png" alt="写真1" /></a>
               </li>
               <li>
-                <img src="images/model5.png" alt="写真1" />
+                <a href="#step2" id="nextstep1"><img src="images/model5.png" alt="写真1" /></a>
               </li>
             </ul>
             <ul class="menu1" data-cues="slideInUp" data-group="images">
@@ -115,39 +127,57 @@
               </div>
             </div>
             <div>
-              <input type="button" class="action-buttons" id="up-button" value="Back" />
-              <input type="button" class="action-buttons" id="down-button" value="Next" />
+              <input type="button" class="action-buttons" id="back-button" value="Back" />
+              <input type="button" class="action-buttons" id="next-button" value="Next" />
             </div>
 
             <div class="right-slide">
               <div id="step2">
                 <h1 class="subcopy">Choose your size</h1>
-                <div>
-                  Size:<select name="size" id="size-selector">
-                    <option value="sm">小</option>
-                    <option value="md" selected>中</option>
+                <div class="options">
+                  サイズ:<select name="size" id="size-selector">
+                    <option value="sm" selected>小</option>
+                    <option value="md">中</option>
                     <option value="lg">大</option></select
                   ><br />
-                  Direction: <img src="images/icon3.png" id="tate" />
+                  <br />
+                  方向: <img src="images/icon3.png" id="tate" />
                   <img src="images/icon4.png" id="yoko" />
                   <div id="moyou-area"></div>
+                  <br />
                 </div>
               </div>
-              <div>
+              <div id="step3">
                 <h1 class="subcopy">Choose your color</h1>
-                Color:<br />
-
-                <p id="color-area">
-                  <!-- 枠 <input type="color" id="waku" value="#9a760f" /> 裏 <input type="color" id="ura" value="#d2a77e" /> -->
-                </p>
+                <div id="color-area" class="options"></div>
+                <!-- <div class="options">
+                  1) 枠<br />
+                  色：<input type="color" id="waku" value="#9a760f" /><br />
+                  デフォルト：<select name="defaultcolor" id="model-no">
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                    <option value="3">Green</option></select
+                  ><br />
+                  <br />
+                  2) 裏<br />
+                  色：<input type="color" id="ura" value="#d2a77e" /><br />
+                  デフォルト：<select name="defaultcolor" id="model-no">
+                    <option value="1">Red</option>
+                    <option value="2">Blue</option>
+                    <option value="3">Green</option></select
+                  ><br />
+                  <br />
+                  写真アップロード：
+                </div> -->
               </div>
-              <div>
+              <div id="step4">
                 <h1 class="subcopy">Preview your frame</h1>
-
-                <button id="arBtn">ARで見る</button>
-                <button id="resetBtn">リセット</button>
-
-                <div id="qr"></div>
+                <div class="options">
+                  <div id="qr"></div>
+                  <br />
+                  <button id="arBtn">ARで見る</button><br />
+                  <button id="resetBtn">やり直し</button>
+                </div>
               </div>
             </div>
           </div>
@@ -157,203 +187,13 @@
     </div>
     <!--wrap-->
 
+    <!--footer-->
     <footer>
       <a href="index.html"><img src="images/logo.png" alt="ロゴ" id="footer_logo" /></a>
       <p class="copyright">Copyright &copy; 2021 FRAME All Rights Reserved.</p>
     </footer>
-    <script>
-      var model = require('./3D/model');
-      model.modelChange();
-    </script>
-    <script>
-      $('.parallax-mv').parallax({ imageSrc: 'img/menu1.jpg' });
-
-      $(window).on('scroll', function () {
-        if ($(window).scrollTop() > 2100) {
-          $('.nav').addClass('active');
-          console.log(true);
-        } else {
-          //remove the background property so it comes transparent again (defined in your css)
-          $('.nav').removeClass('active');
-        }
-      });
-
-      var $root = $('html, body');
-      $('a[href^="#"]').click(function () {
-        $root.animate(
-          {
-            scrollTop: $($.attr(this, 'href')).offset().top,
-          },
-          1500
-        );
-
-        return false;
-      });
-    </script>
-
-    <script>
-      $(window).on('scroll', function () {
-        if ($(window).scrollTop() > 3000) {
-          $('.nav').addClass('active1');
-          console.log(true);
-        } else {
-          //remove the background property so it comes transparent again (defined in your css)
-          $('.nav').removeClass('active1');
-        }
-      });
-
-      var $root = $('html, body');
-      $('a[href^="#"]').click(function () {
-        $root.animate(
-          {
-            scrollTop: $($.attr(this, 'href')).offset().top,
-          },
-          1500
-        );
-
-        return false;
-      });
-    </script>
-
-    <script>
-      $(window).on('scroll', function () {
-        if ($(window).scrollTop() > 4100) {
-          $('.nav').addClass('active2');
-          console.log(true);
-        } else {
-          //remove the background property so it comes transparent again (defined in your css)
-          $('.nav').removeClass('active2');
-        }
-      });
-
-      var $root = $('html, body');
-      $('a[href^="#"]').click(function () {
-        $root.animate(
-          {
-            scrollTop: $($.attr(this, 'href')).offset().top,
-          },
-          1500
-        );
-
-        return false;
-      });
-    </script>
-
-    <script>
-      $(function () {
-        $('.list-mv01').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
-          if (isInView) {
-            $(this).stop().addClass('mv01');
-          } else {
-            $(this).stop().removeClass('mv01');
-          }
-        });
-      });
-    </script>
-
-    <script>
-      scrollCue.init();
-    </script>
-
-    <script>
-      ScrollReveal().reveal('#about', {
-        duration: 2000,
-        origin: 'right',
-        distance: '50px',
-        reset: true,
-      });
-
-      ScrollReveal().reveal('#deli', {
-        duration: 2000,
-        origin: 'left',
-        distance: '50px',
-        reset: true,
-      });
-
-      ScrollReveal().reveal('.subcopy1', {
-        duration: 2000,
-        origin: 'left',
-        distance: '50px',
-        reset: true,
-      });
-
-      ScrollReveal().reveal('.menuttl1', {
-        duration: 2000,
-        origin: 'left',
-        distance: '50px',
-        reset: true,
-      });
-
-      // ScrollReveal().reveal('.subcopy', {
-      //     duration: 2000,
-      //     origin: 'right',
-      //     distance: '50px',
-      //     reset: true
-      // });
-
-      ScrollReveal().reveal('.menuttl', {
-        duration: 2000,
-        origin: 'right',
-        distance: '50px',
-        reset: true,
-      });
-
-      ScrollReveal().reveal('.menu', {
-        duration: 2000,
-        origin: 'right',
-        distance: '50px',
-        reset: true,
-      });
-
-      ScrollReveal().reveal('.subcopy3', {
-        duration: 2000,
-        origin: 'left',
-        distance: '50px',
-        reset: true,
-      });
-
-      ScrollReveal().reveal('.menuttl3', {
-        duration: 2000,
-        origin: 'left',
-        distance: '50px',
-        reset: true,
-      });
-
-      ScrollReveal().reveal('.menu1', {
-        duration: 2000,
-        origin: 'left',
-        distance: '50px',
-        reset: true,
-      });
-    </script>
-
-    <script>
-      $(function () {
-        var showFlag = false;
-        var topBtn = $('#steps');
-        topBtn.css('bottom', '-500px');
-        var showFlag = false;
-        //スクロールが100に達したらボタン表示
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 550) {
-            if (showFlag == false) {
-              showFlag = true;
-              topBtn.stop().animate({ bottom: '100px' }, 1000);
-            }
-          } else {
-            if (showFlag) {
-              showFlag = false;
-              topBtn.stop().animate({ bottom: '-500px' }, 1000);
-            }
-          }
-        });
-      });
-    </script>
 
     <script src="js/jquery.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script> -->
-
     <script src="js/chara.js"></script>
     <script src="js/custom.js"></script>
 
@@ -361,7 +201,7 @@
     <script src="3D/three.min.js"></script>
     <script type="module" src="3D/GLTFLoader.js"></script>
 
-    <!-- <script type="module" src="3D/model.js"></script> -->
+    <script type="module" src="3D/model.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js%22%3E"></script>
   </body>
 </html>
