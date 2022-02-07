@@ -132,9 +132,6 @@ async function init(url) {
     Canvas.map.needsUpdate = true;
   });
 
-  // Canvas.map = null;
-  // Canvas.map.needsUpdate = true;
-
   function textureSwitch(event) {
     // 要素内イベントのキャンセル
     event.preventDefault();
