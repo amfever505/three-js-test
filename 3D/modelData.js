@@ -2,8 +2,8 @@ export const products = [
   {
     id: 1,
     name: 'frame001',
-    lg: 'lg',
-    md: 'md',
+    lg: 'l',
+    md: 'm',
     sm: 'sm',
     object: [
       { name: '外枠', value: ['frame_Cube003'], color: '#7E7853' },
@@ -19,16 +19,20 @@ export const products = [
   },
   {
     id: 2,
-    name: 'frame2_golden',
-    lg: '606_455',
-    md: '509_394',
-    sm: '379_288',
+    name: 'frame002',
+    lg: 'l',
+    md: 's',
+    sm: 's',
     object: [
-      { name: '枠', value: 'frame', color: '#9a760f' },
-      { name: '裏', value: 'ura', color: '#d2a77e' },
+      { name: '枠', value: ['frame_inner_Cube001'], color: '#9a760f' },
+      { name: '裏', value: ['frame_Cube003'], color: '#d2a77e' },
     ],
-    moyou: [],
-    scale: 0.2,
+    moyou: [
+      // { name: '模様1', value: 'moyou001_Lines001' },
+      // { name: '模様2', value: 'moyou021_Lines002' },
+      // { name: '模様3', value: 'moyou002_Lines' },
+    ],
+    scale: 1,
   },
 
   { id: 3, name: 'frame2_golden', lg: '', md: '', sm: '', object: ['ura', 'waku'] },
