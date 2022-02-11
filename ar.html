@@ -21,25 +21,14 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.1.0/three.js/build/ar.js"></script>
     <!-- <script src="./3D/modelData.js"></script> -->
 
-    <script>
+    <script type="module">
       // パラメーターを取得
+      import * as modelData from './3D/modelData.js';
 
       var url = new URL(window.location.href);
       var params = url.searchParams;
       console.log(params);
-
-      // if (params.get("id") == 1) {
-      //   let modelPath = "./frame2_golden2_m.glb";
-      //   let modelParams = [
-      //     { name: "枠", color: "0x" + params.get("Waku") },
-      //     { name: "裏", color: "0x" + params.get("Ura") },
-      //     { name: "キャンバス", color: null }
-      //   ];
-      // } else {
-      //   let modelPath = "./frame2_golden2_m.glb";
-      // }
-      // let modelPath = "./frame2_golden2_m.glb";
-
+      console.log(modelData.products);
       (() => {
         onload = () => {
           // tick = 0;
