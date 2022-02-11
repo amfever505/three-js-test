@@ -18,7 +18,7 @@ export const products = [
     scale: 1,
   },
   {
-    id: 1,
+    id: 2,
     name: 'frame002',
     lg: 'l',
     md: 's',
