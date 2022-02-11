@@ -28,7 +28,11 @@
       var url = new URL(window.location.href);
       var params = url.searchParams;
       console.log(params);
-      console.log(modelData.products);
+
+      // 初期化
+      let MDL = modelData.products[0];
+      console.log(MDL);
+
       (() => {
         onload = () => {
           // tick = 0;
@@ -109,7 +113,8 @@
             { name: 'canvas', color: null },
           ];
           //   モデルデータ読み込み・切り替え
-          if (params.get('id') == 1) {
+
+          if (params.get('id') == 0) {
             let modelSize = params.get('size');
             modelPath = '3D/model/frame00' + params.get('id') + '_' + modelSize + '.glb';
             console.log(modelPath);

@@ -238,7 +238,7 @@ async function init(url) {
 }
 // モデル切り替え
 let MDL = modelData.products[0];
-console.log();
+
 $('.modelicon').on('click', function () {
   let ID = Number($(this).attr('id'));
   MDL = modelData.products[ID];

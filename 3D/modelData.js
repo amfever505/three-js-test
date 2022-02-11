@@ -1,6 +1,6 @@
 export const products = [
   {
-    id: 1,
+    id: 0,
     name: 'frame001',
     lg: 'l',
     md: 'm',
@@ -18,7 +18,7 @@ export const products = [
     scale: 1,
   },
   {
-    id: 2,
+    id: 1,
     name: 'frame002',
     lg: 'l',
     md: 's',
@@ -35,10 +35,10 @@ export const products = [
     scale: 1,
   },
 
+  { id: 2, name: 'frame2_golden', lg: '', md: '', sm: '', object: ['ura', 'waku'] },
   { id: 3, name: 'frame2_golden', lg: '', md: '', sm: '', object: ['ura', 'waku'] },
   { id: 4, name: 'frame2_golden', lg: '', md: '', sm: '', object: ['ura', 'waku'] },
   { id: 5, name: 'frame2_golden', lg: '', md: '', sm: '', object: ['ura', 'waku'] },
-  { id: 6, name: 'frame2_golden', lg: '', md: '', sm: '', object: ['ura', 'waku'] },
 ];
 
 // export const products2 = [1, 2, 3, 4, 5, 6];
