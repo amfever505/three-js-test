@@ -105,21 +105,14 @@
           resultData.push(obj);
 
           console.log(resultData);
+          console.log(Object.keys(resultData[0]));
           let modelPath;
-          let modelParams = [
-            { name: 'frame', color: '0x' + params.get('Waku') },
-            { name: 'ura', color: '0x' + params.get('Ura') },
-            { name: 'canvas', color: null },
-          ];
+          // let modelParams = [
+          //   { name: 'frame', color: '0x' + params.get('Waku') },
+          //   { name: 'ura', color: '0x' + params.get('Ura') },
+          //   { name: 'canvas', color: null },
+          // ];
           //   モデルデータ読み込み・切り替え
-
-          // if (params.get('id') == 0) {
-          //   let modelSize = params.get('size');
-          //   modelPath = '3D/model/frame00' + params.get('id') + '_' + modelSize + '.glb';
-          //   console.log(modelPath);
-          // } else {
-          //   modelPath = '3D/model/frame2_golden_379_288.glb';
-          // }
 
           let MDL = modelData.products[params.get('id')];
           modelPath = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
@@ -139,6 +132,17 @@
             //パラメーターからカスタマイズカラー取得
 
             // object.getObjectByName(w).material.color.setHex(c);
+
+            // 模様切り替え
+            let moyouSwitch = params.get(Object.keys(resultData[0])[3]).split(',');
+            moyouSwitch.forEach((x, index) => {
+              if (x == 'false') {
+                // 非表示にする
+                console.log(MDL.moyou[index].value);
+                object.getObjectByName(MDL.moyou[index].value).material.visible = false;
+              }
+            });
+            // console.log(moyouSwitch);
 
             object.scale.set(size, size, size);
             object.position.set(0, 0, -0.2);
