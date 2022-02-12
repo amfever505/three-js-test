@@ -123,6 +123,18 @@
             let size = 0.1;
             let object = data.scene;
 
+            // カラー　配列
+            let colorArray = Object.values(resultData[0]).splice(4);
+
+            MDL.object.forEach((obj, index) => {
+              obj.value.forEach((name) => {
+                object.getObjectByName(name).material.color.setHex(colorArray[index]);
+                console.log(name, colorArray[index]);
+              });
+            });
+
+            //外枠からカラーカスタマイズの箇所全部拾う
+
             // object
             //   .getObjectByName(modelData[1][1])
             //   .material.color.setHex(modelData[1][2]);
@@ -137,12 +149,10 @@
             let moyouSwitch = params.get(Object.keys(resultData[0])[3]).split(',');
             moyouSwitch.forEach((x, index) => {
               if (x == 'false') {
-                // 非表示にする
-                console.log(MDL.moyou[index].value);
+                // falseの方だけを非表示にする
                 object.getObjectByName(MDL.moyou[index].value).material.visible = false;
               }
             });
-            // console.log(moyouSwitch);
 
             object.scale.set(size, size, size);
             object.position.set(0, 0, -0.2);
