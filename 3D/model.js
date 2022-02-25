@@ -112,6 +112,24 @@ async function init(url) {
   const modelH = box.max.y - box.min.y;
   // const modelD = box.max.z - box.min.z;
 
+  // サイズ切り替え
+  const modelNo = document.querySelector('#size-selector');
+
+  modelNo.addEventListener('change', (e) => {
+    console.log('change', modelNo.value);
+    let SC = MDL.scale;
+    if (modelNo.value == 'sm') {
+      // url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
+      console.log(SC);
+    } else if (modelNo.value == 'md') {
+      SC *= 1.5;
+    } else if (modelNo.value == 'lg') {
+      SC *= 2;
+    }
+    controls.reset();
+    model.scale.set(SC, SC, SC);
+  });
+
   // texture変更
   // var filechange = document.getElementById('file');
   // filechange.addEventListener('change', textureSwitch, false);
@@ -259,24 +277,21 @@ resetBtn.addEventListener('click', () => {
   init(url);
 });
 
-// サイズ切り替え
-const modelNo = document.querySelector('#size-selector');
-
-modelNo.addEventListener('change', (e) => {
-  console.log('change', modelNo.value);
-  if (modelNo.value == 'sm') {
-    url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
-    model.scale.set(MDL.scale, MDL.scale, MDL.scale);
-  } else if (modelNo.value == 'md') {
-    // url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
-    let SC = MDL.scale * 1.5;
-    model.scale.set(SC, SC, SC);
-  } else if (modelNo.value == 'lg') {
-    // url = '3D/model/' + MDL.name + '_' + MDL.lg + '.glb';
-    let SC = MDL.scale * 2;
-    model.scale.set(SC, SC, SC);
-  }
-  // init(url);
-});
+// サイズ切り替え init()の中で実行することにした
+// const modelNo = document.querySelector('#size-selector');
+// modelNo.addEventListener('change', (e) => {
+//   console.log('change', modelNo.value);
+//   if (modelNo.value == 'sm') {
+//     url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
+//     model.scale.set(MDL.scale, MDL.scale, MDL.scale);
+//   } else if (modelNo.value == 'md') {
+//     let SC = MDL.scale * 1.5;
+//     controls.reset();
+//     model.scale.set(SC, SC, SC);
+//   } else if (modelNo.value == 'lg') {
+//     let SC = MDL.scale * 2;
+//     model.scale.set(SC, SC, SC);
+//   }
+// });
 
 export default model;
