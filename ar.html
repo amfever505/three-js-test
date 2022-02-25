@@ -135,16 +135,6 @@
 
             //外枠からカラーカスタマイズの箇所全部拾う
 
-            // object
-            //   .getObjectByName(modelData[1][1])
-            //   .material.color.setHex(modelData[1][2]);
-            // let customizeObj = params.get('id');
-            //パラメーターから変更の名前取得
-            // let customizeColor = modelParams[0].color;
-            //パラメーターからカスタマイズカラー取得
-
-            // object.getObjectByName(w).material.color.setHex(c);
-
             // 模様切り替え
             let moyouSwitch = params.get(Object.keys(resultData[0])[3]).split(',');
             moyouSwitch.forEach((x, index) => {
@@ -155,20 +145,21 @@
             });
 
             // scaleでサイズ調整
-            console.log(size);
             if (params.get('size') == 'sm') {
               size *= 1;
             } else if (params.get('size') == 'md') {
-              console.log('md');
               size *= 1.5;
-              console.log(size);
             } else {
               size *= 2;
             }
-
             object.scale.set(size, size, size);
             object.position.set(0, 0, -0.2);
             object.rotation.set(-(Math.PI / 2), 0, 0);
+
+            // if 縦
+            if (params.get('dir') == 'tate') {
+              object.rotation.set(-(Math.PI / 2), Math.PI / 2, 0);
+            }
             marker.add(object);
             // const box = new THREE.Box3().setFromObject(object);
             // const modelW = box.max.x - box.min.x;
