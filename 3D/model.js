@@ -266,12 +266,17 @@ modelNo.addEventListener('change', (e) => {
   console.log('change', modelNo.value);
   if (modelNo.value == 'sm') {
     url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
+    model.scale.set(MDL.scale, MDL.scale, MDL.scale);
   } else if (modelNo.value == 'md') {
-    url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
+    // url = '3D/model/' + MDL.name + '_' + MDL.md + '.glb';
+    let SC = MDL.scale * 1.5;
+    model.scale.set(SC, SC, SC);
   } else if (modelNo.value == 'lg') {
-    url = '3D/model/' + MDL.name + '_' + MDL.lg + '.glb';
+    // url = '3D/model/' + MDL.name + '_' + MDL.lg + '.glb';
+    let SC = MDL.scale * 2;
+    model.scale.set(SC, SC, SC);
   }
-  init(url);
+  // init(url);
 });
 
 export default model;
