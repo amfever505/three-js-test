@@ -61,7 +61,7 @@
 
   <body>
     <div class="custom-top">
-      <img src="images/logo.png" alt="logo" class="logo" />
+      <a href="index.php"><img src="images/logo.png" alt="logo" class="logo" /></a>
 
       <div class="main_txt">
         <h1>START<br /><br />YOUR CREATION</h1>
@@ -77,10 +77,10 @@
       <nav class="nav">
         <div id="steps">
           <ul>
-            <li><a href="#step1">Step 1</a></li>
-            <li><a href="#step2">Step 2</a></li>
-            <li><a href="#step2">Step 3</a></li>
-            <li><a href="#step3">Step 4</a></li>
+            <li><a href="#step1" class="step" id="st1">Step 1</a></li>
+            <li><a href="#step2" class="step" id="st2">Step 2</a></li>
+            <li><a href="#step2" class="step" id="st3">Step 3</a></li>
+            <li><a href="#step3" class="step" id="st4">Step 4</a></li>
           </ul>
         </div>
       </nav>
@@ -89,25 +89,22 @@
         <div class="wrapper">
           <div class="section1" id="step1">
             <h1 class="subcopy1">Choose your style</h1>
-            <h2 class="menuttl">01</h2>
+            <h2 class="menuttl1">01</h2>
+            <h2 class="menuttl2">02</h2>
+            <h2 class="menuttl3">03</h2>
+            <h2 class="menuttl4">04</h2>
             <ul class="gal">
               <li>
                 <a href="#step2" class="modelicon" id="0"><img src="images/model1.png" alt="写真1" /></a>
               </li>
               <li>
-                <a href="#step2" class="modelicon" id="1"><img src="images/model3.png" alt="写真1" /></a>
+                <a href="#step2" class="modelicon" id="1"><img src="images/model5.png" alt="写真2" /></a>
               </li>
               <li>
-                <a href="#step2" id="nextstep1"><img src="images/model2.png" alt="写真1" /></a>
+                <a href="#step2" class="modelicon" id="2"><img src="images/model3.png" alt="写真3" /></a>
               </li>
               <li>
-                <a href="#step2" id="nextstep1"><img src="images/model4.jpg" alt="写真1" /></a>
-              </li>
-              <li>
-                <a href="#step2" id="nextstep1"><img src="images/model6.png" alt="写真1" /></a>
-              </li>
-              <li>
-                <a href="#step2" id="nextstep1"><img src="images/model5.png" alt="写真1" /></a>
+                <a href="#step2" class="modelicon" id="3"><img src="images/model6.png" alt="写真4" /></a>
               </li>
             </ul>
             <ul class="menu1" data-cues="slideInUp" data-group="images">
@@ -122,63 +119,118 @@
             <div class="left-slide">
               <div>
                 <canvas id="c" style="width: 500px; height: 500px"></canvas>
-                <label for="image-preview">画像でプレビュー</label>
-
-                <input type="checkbox" name="画像でプレビュー" id="image-preview" value="true" checked />
+                <div class="imgpreview">
+                  <label for="image-preview">画像でプレビュー</label>
+                  <label class="switch">
+                    <input type="checkbox" name="画像でプレビュー" id="image-preview" value="true" checked />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
               </div>
             </div>
             <div>
-              <input type="button" class="action-buttons" id="back-button" value="Back" />
-              <input type="button" class="action-buttons" id="next-button" value="Next" />
+              <input type="button" class="action-buttons" id="back-button" value="戻る" />
+              <input type="button" class="action-buttons1" id="next-button" value="次へ" />
+              <img src="images/reset.png" class="action-buttons2" id="resetBtn" />
             </div>
 
             <div class="right-slide">
               <div id="step2">
                 <h1 class="subcopy">Choose your size</h1>
                 <div class="options">
-                  サイズ:<select name="size" id="size-selector">
+                  <div class="inbox3">
+                    <p>サイズ：</p>
+                    <!-- <select name="size" id="size-selector">
                     <option value="sm" selected>小</option>
                     <option value="md">中</option>
-                    <option value="lg">大</option></select
-                  ><br />
-                  <br />
-                  方向: <img src="images/icon3.png" id="tate" />
-                  <img src="images/icon4.png" id="yoko" />
-                  <div id="moyou-area"></div>
-                  <br />
+                    <option value="lg">大</option>
+                    </select> -->
+                    <div class="inbox" id="size-selector">
+                      <input type="radio" class="sizebtn" value="sm" name="size" id="small" checked />
+                      <label for="small">小</label>
+                      <input type="radio" class="sizebtn" value="md" name="size" id="medium" />
+                      <label for="medium">中</label>
+                      <input type="radio" class="sizebtn" value="lg" name="size" id="large" />
+                      <label for="large">大</label>
+                    </div>
+
+                    <p>方向：</p>
+                    <div class="inbox">
+                      <input type="radio" class="directbtn" name="direction" id="tate" />
+                      <label for="tate">縦</label>
+                      <input type="radio" class="directbtn" name="direction" id="yoko" checked />
+                      <label for="yoko">横</label>
+                    </div>
+
+                    <div class="inbox" id="moyou-area">
+                      <!-- <input type="checkbox" class="decobtn" value="" name="deco" id="moyou1" checked />
+                      <label for="moyou1"><img src="images/frame001-1.jpg" /></label> -->
+                    </div>
+                  </div>
                 </div>
               </div>
               <div id="step3">
                 <h1 class="subcopy">Choose your color</h1>
-                <div id="color-area" class="options"></div>
-                <!-- <div class="options">
-                  1) 枠<br />
-                  色：<input type="color" id="waku" value="#9a760f" /><br />
-                  デフォルト：<select name="defaultcolor" id="model-no">
-                    <option value="1">Red</option>
-                    <option value="2">Blue</option>
-                    <option value="3">Green</option></select
-                  ><br />
-                  <br />
-                  2) 裏<br />
-                  色：<input type="color" id="ura" value="#d2a77e" /><br />
-                  デフォルト：<select name="defaultcolor" id="model-no">
-                    <option value="1">Red</option>
-                    <option value="2">Blue</option>
-                    <option value="3">Green</option></select
-                  ><br />
-                  <br />
-                  写真アップロード：
-                </div> -->
+                <div class="options">
+                  <div class="inbox1">
+                    <input class="radio" id="color-1" name="group" type="radio" checked />
+                    <input class="radio" id="color-2" name="group" type="radio" />
+                    <input class="radio" id="color-3" name="group" type="radio" />
+                    <input class="radio" id="color-4" name="group" type="radio" />
+                    <div class="tabs" id="tabs">
+                      <!-- <label class="tab" id="color-1-tab" for="color-1">外枠</label> -->
+                    </div>
+                    <div class="panels" id="panels">
+                      <!-- <div class="panel" id="color-1-panel">
+                        <div class="selectcolor">
+                          <div>
+                            <div id="color-area"></div>
+                            <p>画像アップロード：</p>
+                            <input type="file" onChange="imgPreView(event, 'preview1')" class="stepbtn1" id="file1" />
+                            <label for="file1">画像選択</label>
+                          </div>
+                          <div class="uploadimg" id="preview1"></div>
+                        </div>
+                      </div> -->
+
+                      <!-- <div class="panel" id="color-2-panel">
+                        <div class="selectcolor">
+                          <div>
+                            <div id="color-area"></div>
+                            <p>画像アップロード：</p>
+                            <input type="file" onChange="imgPreView(event, 'preview2')" class="stepbtn1" id="file2" />
+                            <label for="file2">画像選択</label>
+                          </div>
+                          <div class="uploadimg" id="preview2"></div>
+                        </div>
+                      </div> -->
+
+                      <!-- <div class="panel" id="color-3-panel">
+                        <div class="selectcolor">
+                          <div>
+                            <div id="color-area"></div>
+                            <p>画像アップロード：</p>
+                            <input type="file" onChange="imgPreView(event, 'preview2')" class="stepbtn1" id="file2" />
+                            <label for="file2">画像選択</label>
+                          </div>
+                          <div class="uploadimg" id="preview2"></div>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
               </div>
               <div id="step4">
                 <h1 class="subcopy">Preview your frame</h1>
                 <div class="options">
-                  <div id="qr"></div>
-                  <div data-url="https://kumatech-lab.com"></div>
-                  <br />
-                  <button id="arBtn">ARで見る</button><br />
-                  <button id="resetBtn">やり直し</button>
+                  <div class="inbox2">
+                    <div id="qr"></div>
+                    <div data-url="https://kumatech-lab.com"></div>
+                    <div class="stepbtns">
+                      <button id="arBtn" class="stepbtn">ARで見る</button><br />
+                      <a href="custom.html"><button id="resetBtn" class="stepbtn">最初から</button></a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -191,7 +243,7 @@
 
     <!--footer-->
     <footer>
-      <a href="index.html"><img src="images/logo.png" alt="ロゴ" id="footer_logo" /></a>
+      <a href="index.php"><img src="images/logo.png" alt="ロゴ" id="footer_logo" /></a>
       <p class="copyright">Copyright &copy; 2021 FRAME All Rights Reserved.</p>
     </footer>
 

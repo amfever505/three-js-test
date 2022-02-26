@@ -64,24 +64,48 @@ async function init(url) {
   let customizeMoyou = '';
   let Picker = [];
   let moyouResults = [];
+  let tabs = '';
 
+  let panels = '';
+  let panel = ''; // panel共通内容
   // カラー変更のエリアを作る
   MDL.object.forEach((item, index) => {
-    customizeObj += `${item.name} <input type="color" id="${item.name}" value="${item.color}" /><br>`;
+    // tab作る
+    tabs += `<label class="tab" id="color-${index + 1}-tab" for="color-${index + 1}">${item.name}</label>`;
+    panels += `
+    <div class="panel" id="color-${index + 1}-panel">
+    <div class="selectcolor">
+        <div>
+          <div id="color-area">${item.name} <input type="color" id="${item.name}" value="${item.color}" /></div>
+          <p>画像から色をカスタマイズ</p>
+          <input type="file" onChange="imgPreView(event, 'preview${index + 1}')" class="stepbtn1" id="file${
+      index + 1
+    }" />
+          <label for="file${index + 1}">画像選択</label>
+        </div>
+        <div class="uploadimg" id="preview${index + 1}"></div>
+      </div>
+    </div>`;
+
     Picker[index] = [item.name, item.value, '0x' + item.color.slice('1')];
   });
-  $('#color-area').html(customizeObj);
+  $('#tabs').html(tabs);
+  $('#panels').html(panels);
 
   // 模様変更のエリアを作る
   if (MDL.moyou.length > 0) {
-    customizeMoyou = '模様：';
+    customizeMoyou = '模様：<br>';
     MDL.moyou.forEach((item, index) => {
-      customizeMoyou += `<br><label> <input type="checkbox" id="${item.value}" name="${index}" class="moyouOption" checked>${item.name}</label>`;
+      customizeMoyou += `<input type="checkbox" id="${
+        item.value
+      }" name="${index}" class="decobtn" checked> <label for="${item.value}"><img src="images/${MDL.name}-${
+        index + 1
+      }.jpg" /></label>`;
       moyouResults.push(true);
     });
   }
   $('#moyou-area').html(customizeMoyou);
-  $('.moyouOption').on('change', function () {
+  $('.decobtn').on('change', function () {
     model.getObjectByName($(this)[0].id).material.visible = !model.getObjectByName($(this)[0].id).material.visible;
 
     moyouResults[$(this)[0].name] = $(this).prop('checked');
@@ -112,23 +136,23 @@ async function init(url) {
   const modelH = box.max.y - box.min.y;
   // const modelD = box.max.z - box.min.z;
 
-  // サイズ切り替え
-  const modelNo = document.querySelector('#size-selector');
-
-  modelNo.addEventListener('change', (e) => {
-    console.log('change', modelNo.value);
-    let SC = MDL.scale;
-    if (modelNo.value == 'sm') {
-      // url = '3D/model/' + MDL.name + '_' + MDL.sm + '.glb';
-      console.log(SC);
-    } else if (modelNo.value == 'md') {
-      SC *= 1.5;
-    } else if (modelNo.value == 'lg') {
-      SC *= 2;
-    }
-    controls.reset();
-    model.scale.set(SC, SC, SC);
-  });
+  // ラジオボタンでサイズ切り替え
+  let MDLSize = 'sm';
+  document.getElementsByName('size').forEach((r) =>
+    r.addEventListener('change', (e) => {
+      let SC = MDL.scale;
+      if (e.target.value == 'sm') {
+      } else if (e.target.value == 'md') {
+        SC *= 1.5;
+        MDLSize = 'md';
+      } else if (e.target.value == 'lg') {
+        SC *= 2;
+        MDLSize = 'lg';
+      }
+      controls.reset();
+      model.scale.set(SC, SC, SC);
+    })
+  );
 
   // texture変更
   // var filechange = document.getElementById('file');
@@ -181,8 +205,6 @@ async function init(url) {
   // 位置設定
   model.position.set(-modelW / 60, -modelH / 10, -25);
 
-  // const Tate = document.querySelector('#tate');
-  // const Yoko = document.querySelector('#Yoko');
   let Direction = 'yoko';
   $('#tate').on('click', () => {
     Direction = 'tate';
@@ -194,7 +216,7 @@ async function init(url) {
   });
   function directionChange() {
     if (Direction == 'tate') {
-      model.rotation.set(0, 0, Math.PI / 2);
+      model.rotation.set(0, 0, -Math.PI / 2);
     } else {
       model.rotation.set(0, 0, 0);
     }
@@ -216,7 +238,7 @@ async function init(url) {
   arBtn.addEventListener('click', (e) => {
     // idとりあえず1でお試し
 
-    let Param = [{ id: MDL.id }, { size: modelNo.value }, { dir: Direction }, { moyou: moyouResults }];
+    let Param = [{ id: MDL.id }, { size: MDLSize }, { dir: Direction }, { moyou: moyouResults }];
     Picker.forEach((x) => {
       let obj = new Object();
       obj[x[0]] = x[2];

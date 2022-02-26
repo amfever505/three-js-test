@@ -1,25 +1,23 @@
 //Img Upload
 
-function imgPreView(event, targetId){
+function imgPreView(event, targetId) {
   var file = event.target.files[0];
   var reader = new FileReader();
   var preview = document.getElementById(targetId);
-  var previewImage = document.getElementById("previewImage-"+targetId);
-  
-  if(previewImage != null)
-    preview.removeChild(previewImage);
+  console.log(targetId);
+  var previewImage = document.getElementById('previewImage-' + targetId);
 
-  reader.onload = function(event) {
-     var img = document.createElement("img");
-     img.setAttribute("src", reader.result);
-     img.setAttribute("id", "previewImage-"+targetId);
-     preview.appendChild(img);
+  if (previewImage != null) preview.removeChild(previewImage);
+
+  reader.onload = function (event) {
+    var img = document.createElement('img');
+    img.setAttribute('src', reader.result);
+    img.setAttribute('id', 'previewImage-' + targetId);
+    preview.appendChild(img);
   };
 
   reader.readAsDataURL(file);
 }
-
-
 
 //Navigation
 
@@ -35,24 +33,24 @@ $(function () {
   //スクロールが100に達したらボタン表示
   $(window).scroll(function () {
     if ($(this).scrollTop() > 400 && $(this).scrollTop() < 1000) {
-        topBtn.stop().animate({ left: '50px' }, 900);
-        firstStep.addClass('active1');
+      topBtn.stop().animate({ left: '50px' }, 900);
+      firstStep.addClass('active1');
+      secondStep.removeClass('active1');
+      thirdStep.removeClass('active1');
+      fourthStep.removeClass('active1');
+    } else if ($(this).scrollTop() > 1550 && $(this).scrollTop() < 2050) {
+      topBtn.stop().animate({ left: '50px' }, 900);
+
+      if (thirdStep.hasClass('active1') || fourthStep.hasClass('active1')) {
         secondStep.removeClass('active1');
+      } else {
+        secondStep.addClass('active1');
+        firstStep.removeClass('active1');
         thirdStep.removeClass('active1');
         fourthStep.removeClass('active1');
-    }else if ($(this).scrollTop() > 1550 && $(this).scrollTop() < 2050) {
-        topBtn.stop().animate({ left: '50px' }, 900);
-        
-        if(thirdStep.hasClass('active1') || fourthStep.hasClass('active1')){
-          secondStep.removeClass('active1');
-        }else{
-          secondStep.addClass('active1');
-          firstStep.removeClass('active1');
-          thirdStep.removeClass('active1');
-          fourthStep.removeClass('active1');
-        }
-    }else if ($(this).scrollTop() > 2050)  {
-        topBtn.stop().animate({ left: '-300px' }, 1200);
+      }
+    } else if ($(this).scrollTop() > 2050) {
+      topBtn.stop().animate({ left: '-300px' }, 1200);
     }
   });
 });
@@ -85,12 +83,12 @@ function next() {
   x += 100;
   slideRight.style.transform = 'translateY(-' + x + '%)';
   slideRight.animate([{ opacity: '0' }, { opacity: '1' }], 800);
-  if(x == 100){
+  if (x == 100) {
     thirdStep.addClass('active1');
     secondStep.removeClass('active1');
-  }else if (x == 200) {
+  } else if (x == 200) {
     nextBtn.value = '購入';
-    $(".action-buttons1").addClass("active");
+    $('.action-buttons1').addClass('active');
     fourthStep.addClass('active1');
     thirdStep.removeClass('active1');
   } else if (x > 200) {
@@ -109,8 +107,8 @@ function back() {
     thirdStep.addClass('active1');
     fourthStep.removeClass('active1');
     nextBtn.value = '次へ';
-    $(".action-buttons1").removeClass("active");
-  } else if( x == 0){
+    $('.action-buttons1').removeClass('active');
+  } else if (x == 0) {
     secondStep.addClass('active1');
     thirdStep.removeClass('active1');
   } else if (x < 0) {
@@ -130,11 +128,9 @@ function back() {
 //           };
 //   });
 
-
-$('.directbtn').on('change', function() {
+$('.directbtn').on('change', function () {
   $('.directbtn').not(this).prop('checked', false);
 });
-
 
 //Scroll
 
