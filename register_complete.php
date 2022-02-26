@@ -1,23 +1,3 @@
-<?php
-    $dsn = 'mysql:host=localhost;dbname=mini_bbs;charset=utf8mb4';
-    $db_user = 'root';
-    $db_pass = '';
-try {
-    $pdo = new PDO($dsn,$db_user, $db_pass);
-    $pdo->setAttribute(
-		PDO::ATTR_ERRMODE,
-		PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-echo 'DB接続エラー： ' . $e->getMessage();
-}
-                // SQL文をセット
-                $address = $_POST['address'];
-                $pass = hash('sha256',$_POST['pass']);
-                $sql = "UPDATE members SET password = '$pass' WHERE email = '$address' ";
-                $stmt = $pdo->prepare($sql);
-                // SQL実行
-                $stmt->execute();
-?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -67,16 +47,16 @@ echo 'DB接続エラー： ' . $e->getMessage();
             <div id="login_area2">
                 <img src="images/logo.png" alt="logo" class="passlogo">
                 <div class="login_area2_title" id="ttl1">
-                    <h1>Password</h1>
-                    <h2>パスワード変更</h2>
+                    <h1>Creat Account</h1>
+                    <h2>会員登録</h2>
                 </div>
             </div>
         </div>
         <div class="pass-pages">
             <div class="login_area2_content" id="ctn4">
                 <div class="container">
-                    <h2>パスワードを変更しました。</h2>
-                    <p>Your Password is changed!</p>
+                    <h2>会員登録が完了しました！</h2>
+                    <p>Your account register is done!</p>
                     <br>
                     <br>
                     <a  href="index.php"><input type="button" class="completebtn" value="トップページ"></a><br>

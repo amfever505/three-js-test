@@ -26,8 +26,8 @@ if (!empty($_POST)) {
 				$url = "mypage.php";
 				header("Location: {$url}"); exit();
 			} else {
-				$_SESSION['message'] = 'ログインに失敗しました';
-				$id = 'ctn2';
+				$alert = "<script type='text/javascript'>alert('ログインに失敗しました、もう一度お試しください。');</script>";
+				$_SESSION['message'] = $alert ;
 				header('Location: index.php'); exit();
 			}
 		}

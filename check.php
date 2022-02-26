@@ -16,7 +16,7 @@ if (!empty($_SESSION)) {
 			
 		));
 		    $_SESSION['message'] = '登録完了です';
-		header('Location: index.php');
+		header('Location: register_complete.php');
 		exit();
 	}
 

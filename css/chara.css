@@ -8,8 +8,9 @@
     position: fixed;
     right: -150px;
     bottom: 50px;
-    background: #ef3f98;
+    background-image: url(../images/mascot1.png);
     border-radius: 50%;
+    box-shadow: 3px 3px 4px rgb(0 0 0 / 50%);
     z-index: 100;
 }
 #chara a{
@@ -30,6 +31,30 @@
   overflow: hidden;
 }
 
+.popup ul{
+  margin: 56px 25px;
+}
+
+.popup li{
+  margin-bottom: 50px;
+  border-bottom: solid 1px;
+  cursor: pointer;
+}
+
+.popup li :hover{
+  color: rgb(179, 179, 179);
+}
+
+.batu{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.batu :hover{
+  color: rgb(179, 179, 179);
+}
 
 
 #popup_area {
@@ -78,13 +103,14 @@
 
 #popup_area2_box1{
   width: 20%;
-  margin: 10px 0 0 15px;
+  margin: 0 0 0 -20px;
   border-right: solid 1px;
   overflow: hidden;
 }
 
 #popup_area2_box2_1{
-  width: 100%;
+  width: 105%;
+  height: 300px;
   padding: 20px 0;
   overflow: hidden;
   overflow-y: scroll;          /* 縦方向にスクロール可能にする */
@@ -102,4 +128,162 @@
 
 #popup_area3 h3{
   margin-bottom: 20px;
+}
+
+
+
+
+/*お問い合わせ*/
+#popup_category{
+  margin: 0 0 20px 0;
+}
+
+#popup_title{
+  margin: 0 0 20px 0;
+}
+
+#popup_textarea{
+  margin: 0 0 20px 0;
+}
+
+.popup_select{
+  width: 30%;
+  height: 30px;
+  margin-top: 8px;
+  font-size: 15px;
+  border: solid 0.5px;
+  border-radius: 3px;
+  box-shadow: 1.5px 2px 1px 0px rgb(0 0 0 / 36%);
+}
+
+.popup_text{
+  width: 30%;
+  height: 30px;
+  margin-top: 8px;
+  border: solid 0.5px;
+  border-radius: 3px;
+  box-shadow: 1.5px 2px 1px 0px rgb(0 0 0 / 36%);
+}
+
+.popup_submit{
+  width: 10%;
+  margin-top: 0px;
+  border: solid 0.5px;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  font-size: 18px;
+  border-radius: 3px;
+  box-shadow: 1.5px 2px 1px 0px rgb(0 0 0 / 36%);
+}
+
+.popup_textarea{
+  width: 70%;
+  height: 170px;
+  margin-top: 8px;
+  border: solid 0.5px;
+  border-radius: 3px;
+  box-shadow: 1.5px 2px 1px 0px rgb(0 0 0 / 36%);
+}
+
+
+
+
+
+/*Q&A*/
+.cp_qa *, .cp_qa *:after, .cp_qa *:before {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.cp_qa .cp_actab {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	margin: 0 0 1em 0;
+	color: #1b2538;
+}
+.cp_qa .cp_actab input {
+	position: absolute;
+	opacity: 0;
+}
+/* 質問 */
+.cp_qa .cp_actab label {
+  width: 94%;
+	font-weight: bold;
+	line-height: 1.6em;
+	position: relative;
+	display: block;
+	margin: 0 0 0 0;
+	padding: 1em 2em 1em 3.5em;
+	cursor: pointer;
+	text-indent: 1em;
+	border-radius: 0.5em;
+	background: rgba(27,37,56,0.1);
+}
+.cp_qa .cp_actab label::before {
+  width: 94%;
+	font-family: serif;
+	font-size: 1.5em;
+	margin-left: -2em;
+	padding-right: 0.5em;
+	content: 'Q';
+}
+.cp_qa .cp_actab label:hover {
+	transition: all 0.3s;
+	color: #00838f;
+}
+/* --質問の＋アイコン */
+.cp_qa .cp_actab label::after {
+	font-size: 1.7em;
+	font-weight: bold;
+	line-height: 2em;
+	position: absolute;
+	top: 0;
+	right: 0;
+	content: '+';
+	display: inline-block;
+	width: 2em;
+	height: 2em;
+	-webkit-transition: transform 0.4s;
+	        transition: transform 0.4s;
+}
+/* 答え */
+.cp_qa .cp_actab .cp_actab-content {
+	position: relative;
+	overflow: hidden;
+	max-height: 0;
+	padding: 0 0 0 2.5em;
+	-webkit-transition: max-height 0.2s;
+	        transition: max-height 0.2s;
+	border-radius: 0 0 0.5em 0.5em;
+}
+.cp_qa .cp_actab .cp_actab-content::before {
+	font-family: serif;
+	font-size: 1.5em;
+	position: absolute;
+	margin: 0.75em 0 0 -1em;
+	padding: 0;
+	content: 'A';
+}
+.cp_qa .cp_actab .cp_actab-content p {
+	margin: 1em 1em 1em 0;
+}
+/* 質問を開いた時の仕様 */
+/* --答えの高さ */
+.cp_qa .cp_actab input:checked ~ .cp_actab-content {
+  width: 94%;
+	max-height: 40em;
+	border: 10px solid rgba(27,37,56,0.1);
+}
+/* 質問をクリックした時のアイコンの動き */
+.cp_qa .cp_actab input:checked ~ label {
+	color: #00838f;
+	border-radius: 0.5em 0.5em 0 0;
+}
+/* 質問をクリックした時の+の動き */
+.cp_qa .cp_actab input[type=checkbox]:checked + label::after {
+	-webkit-transform: rotateZ(45deg);
+	transform: rotateZ(45deg);
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
 }

@@ -56,3 +56,9 @@ $('.contact').click(function () {
 })
 
 
+
+
+
+// $("#qa_1").hide();
+// $("#qa_2").hide();
+// $("#qa_3").hide();
