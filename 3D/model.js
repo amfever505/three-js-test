@@ -60,14 +60,14 @@ async function init(url) {
   // 全モデルのキャンバスはこうしなくちゃいけない
   const Canvas = model.getObjectByName('canvas_平面').material;
 
-  let customizeObj = '';
+  // let customizeObj = '';
   let customizeMoyou = '';
   let Picker = [];
   let moyouResults = [];
   let tabs = '';
 
   let panels = '';
-  let panel = ''; // panel共通内容
+
   // カラー変更のエリアを作る
   MDL.object.forEach((item, index) => {
     // tab作る
