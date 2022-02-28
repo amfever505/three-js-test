@@ -49,25 +49,24 @@ export const products = [
       { name: '角', value: ['frame_inner_Cube004'], color: '#362807' },
     ],
     moyou: [],
-    scale: 1.5,
+    scale: 2,
   },
   {
     id: 3,
-    name: 'frame001',
+    name: 'frame004',
     lg: 'l',
     md: 'm',
     sm: 's',
     object: [
-      { name: '外枠', value: ['frame_Cube003'], color: '#7E7853' },
+      { name: '外枠', value: ['frame_Cube003'], color: '#05080f' },
       { name: '内枠', value: ['frame_inner_Cube001'], color: '#361402' },
-      { name: '模様', value: ['moyou001_Lines001', 'moyou021_Lines002', 'moyou002_Lines'], color: '#C59B48' },
+      { name: '模様', value: ['moyou001_Lines001', 'moyou021_Lines002'], color: '#C59B48' },
     ],
     moyou: [
       { name: '模様1', value: 'moyou001_Lines001' },
       { name: '模様2', value: 'moyou021_Lines002' },
-      { name: '模様3', value: 'moyou002_Lines' },
     ],
-    scale: 1,
+    scale: 2,
   },
 ];
 

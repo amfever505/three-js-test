@@ -109,7 +109,7 @@ async function init(url) {
     model.getObjectByName($(this)[0].id).material.visible = !model.getObjectByName($(this)[0].id).material.visible;
 
     moyouResults[$(this)[0].name] = $(this).prop('checked');
-    console.log(moyouResults);
+    // console.log(moyouResults);
   });
   // カラーピッカーのイベントハンドラー
 
