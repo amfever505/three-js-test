@@ -754,7 +754,7 @@ input:checked + .slider:before {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  width: 110px;
+  width: 130px;
   margin: 3px;
 }
 
