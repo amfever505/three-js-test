@@ -2,33 +2,26 @@ jQuery(function () {
     var appear = false;
     var chara = $('.U-wrap img');
 
+    $("#chara_button").hide();
 
 
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 150) {  //150pxスクロールしたら
-            if (appear == false) {
-                appear = true;
-                chara.stop().animate({
-                    'right': '50px' //右から50pxの位置に
-                }, 600); //0.6秒かけて現れる
-            }
-        } else {
-            if (appear) {
-                appear = false;
-                chara.stop().animate({
-                    'right': '-240px' //右から-240pxの位置に
-                }, 600); //0.6秒かけて隠れる
-            }
-        }
+    $(window).ready(function () {
+        appear = true;
+        chara.stop().animate({
+            'right': '50px' //右から50pxの位置に
+        }, 300); //0.3秒かけて現れる
+        $("#chara_button").show(500);
+
     });
     chara.click(function () {
         $("#popup_area").show();
         $("#over").show();
-        $(".main,.main-content,.gal,.login,.team,.techs,.back,footer,.movie").addClass("blur");
+        $(".mypage,#chara_button").addClass("blur");
         $("body").addClass("stop");
         return false;
     });
 });
+
 
 
 
@@ -40,11 +33,9 @@ $("#popup_area3").hide();
 
 $('.batu,#over').click(function () {
     $("#popup_area,#popup_area2,#popup_area3,#over").hide();
-    $(".main,.main-content,.gal,.login,.team,.techs,.back,footer,.movie").removeClass("blur");
+    $(".mypage,#chara_button").removeClass("blur");
     $("body").removeClass("stop");
 })
-
-
 
 
 $('.QA').click(function () {

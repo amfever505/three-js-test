@@ -60,6 +60,8 @@ $_SESSION = [];
 
     <!--chara-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- usa -->
+    <link rel="stylesheet" type="text/css" href="css/usa.css">
 
     <!--横スクロール-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
@@ -88,6 +90,11 @@ $_SESSION = [];
         ?>
 		<?php endif; ?>
 
+    <!-- OP Movie -->
+    <!-- <div id="screen">
+    <video class="vid" src="images/logo.mp4" playsinline autoplay muted></video>
+    </div> -->
+
     <!--main-->
     <div class=main>
         <img src="images/logo.png" alt="logo" class="logo">
@@ -102,7 +109,9 @@ $_SESSION = [];
         </div>
     </div>
 
-
+    <div class="movie">
+        <video src="images/HEW.mp4" loop playsinline autoplay muted></video>
+    </div>
 
     <!--introduction-->
     <main class="main-content">
@@ -257,8 +266,8 @@ $_SESSION = [];
         <section class="panels">
             <article class="panels__side panels__side--left">
                 <div class="panels__side panels__side--inner-left">
-                    <p>ゲストとして額縁のカスタマイズを始めます。<br>
-                        Countdown</p>
+                    <p>ゲストとして額縁のカスタマイズを始めます。</p>
+                    <div class="number"><span class="num3">3</span><span class="num2">2</span><span class="num1">1</span></div>
                 </div>
                 <div class="panels__side panels__side--inner">
                     <div id="login_area1">
@@ -490,6 +499,23 @@ $_SESSION = [];
                     <img src="images/PHP.png" />
                     <h2>MySQL</h2>
                 </div>
+
+                <div class="techs_item">
+                    <img src="images/threejs.png" />
+                    <h2>three.js</h2>
+                </div>
+                <div class="techs_item">
+                    <img src="images/arjs.png" />
+                    <h2>AR.js</h2>
+                </div>
+                <div class="techs_item">
+                    <img src="images/blender.png" />
+                    <h2>Blender</h2>
+                </div>
+                <div class="techs_item">
+                    <img src="images/heroku.png" />
+                    <h2>heroku</h2>
+                </div>
             </div>
         </div>
     </div>
@@ -540,9 +566,25 @@ $_SESSION = [];
 
 
 
-    <!--chara-->
-    <div id="chara"></div>
+     <!--chara-->
+     <div class="U-wrap">
 
+    <div class="Ubody">
+    <img src="images/Ubody.png">
+    <div class="Uhead">
+    <img src="images/Uhead.png">
+    <div class="Rear">
+    <img src="images/Rear.png">
+    </div>
+    <div class="Lear">
+    <img src="images/Lear.png">
+    </div>
+    <img src="images/eyes.png">
+    </div>
+
+    </div>
+
+    <div id="over" style="width: 100%; height: 100vh; top:0; position: fixed;"></div>
 
 
     <!--Charanav-->

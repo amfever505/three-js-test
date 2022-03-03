@@ -1,3 +1,25 @@
+//オープニングムービー
+
+// var now = (new Date()).getTime();
+// var lastTime = 0;
+// var lastTimeStr = localStorage['lastTime'];
+// if (lastTimeStr) lastTime = parseInt(lastTimeStr, 10);
+// if (now - lastTime > 1) {
+
+//     var current = $(window).scrollTop();
+//     $(window).scroll(function() {
+//       $(window).scrollTop(current);
+//     });
+    
+//     const $screen = $("#screen");
+//     $screen.delay(6600).animate({height:"0"},280,function(){
+//       $(window).off('scroll');
+//     });
+  
+// } 
+// localStorage['lastTime'] = ""+now;
+
+
 //Login
 
     var Panels = (function() {
@@ -80,10 +102,17 @@
 
       $customBtn.on("click",redirect);
 
-      function redirect(){setTimeout(function (){
+      function redirect(){
+        $(".num3").css("animation-play-state", "running");
+        $(".num2").css("animation-play-state", "running");
+        $(".num1").css("animation-play-state", "running");
+        setTimeout(function (){
         location.href="custom.html";
-      },1000);
+      },5300);
     }
+
+
+
 
       
       

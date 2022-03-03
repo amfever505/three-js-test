@@ -1,36 +1,36 @@
+<!--未完成です！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->
 <?php
-error_reporting(0);
- session_start();
- require('dbconnect.php');
- $id = $_SESSION['email'];
- $q = "$id";
- $sql = "SELECT * FROM members WHERE email = '$q'";
- $stmt  = $db->prepare($sql);
- $stmt->execute();
- $menber = $stmt->fetchAll();
+// require('dbconnect.php');
+// session_start();
+// $id = $_SESSION['email'];
+// $stmt = $db->prepare("SELECT * FROM 'members' WHERE email = ". $id);
+// $menber = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
     <meta charset="UTF-8">
-    <title>Farme | MY PAGE</title>
+    <title>Farme | MYPAGE</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="bootstrap-5.0.0-beta1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chara.css">
 
-    <link rel="stylesheet" type="text/css"
-        href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
-    <link rel="stylesheet" type="text/css"
-        href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
+    <!--m+-->
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css">
+    <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
 
+
+    <!--Poiret One-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 
     <!--chara-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- usa -->
+    <link rel="stylesheet" type="text/css" href="css/usa.css">
 
 </head>
 
@@ -43,67 +43,85 @@ error_reporting(0);
                     <h1>My Page</h1>
                     <h2>マイページ</h2>
                 </div>
-                <div id="mypage_timeline">
-                    <div id="mypage_timeline_title">
-                        <h2>購入履歴</h2>
-                        <p>1ヶ月内の購入履歴がありません。</p>
+                <!--未完成です！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->
+                <div id="profile_area">
+                    <div id="profile_img">
+                        <a href="custom.html"><img src="images/3o7p24soiq14m3sr_20121104184914_0740_0500.png" alt="profile" id="profile_img"></a>
                     </div>
-                    <div id="mypage_timeline_area">
-                        <a href="">
-                            <div id="mypage_timeline_box">
-                                <p>--年--月--日</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div id="mypage_timeline_box">
-                                <p>--年--月--日</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div id="mypage_timeline_box">
-                                <p>--年--月--日</p>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div id="mypage_timeline_box">
-                                <p>--年--月--日</p>
-                            </div>
-                        </a>
+                    <div id="profile">
+                        <p>メールアドレス</p>
+                        <div id="profile_box"></div>
+                        <p>名前</p>
+                        <div id="profile_box"></div>
+                        <p>住所</p>
+                        <div id="profile_box"></div>
+                        <div id="edit">
+                            <a href="edit_profile.php">
+                                <p>EDIT</p>
+                            </a>
+                        </div>
+                        <?php
+                        foreach ($menber as $value) {
+                            echo '<p>メールアドレス</p>';
+                            echo '<div id="profile_box">' . $value['email'] . '</div>';
+                            echo "<br>";
+                            echo '<p>名前</p>';
+                            echo '<div id="profile_box">' . $value['name'] . '</div>';
+                            echo "<br>";
+                            echo '何か';
+                            echo $value[''];
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
-            <div id="profile">
-             <a href="custom.html"><img src="images/3o7p24soiq14m3sr_20121104184914_0740_0500.png" alt="profile" id="profile_img"></a> 
-                <div id="profile_area">
-                    <p>メールアドレス</p>
-                    <?php
-                    foreach($menber as $value){?>
-                        <div id="profile_box"><?php echo '$value["email"]';?> </div>
-                    <?php };
-                    ?>
-                    <p>名前</p>
-                    <?php
-                    foreach($menber as $value){
-                        echo '<div id="profile_box">'.$value['name'].'</div>';
-                    }
-                    ?>
-                    <p>住所</p>
-                    <?php
-                    foreach($menber as $value){
-                        echo '<div id="profile_box">'.$value['address'].'</div>';
-                    }
-                    ?>
-                    <a href="edit_profile.php">
-                        <p class="">編集</p>
-                    </a>
+            <div id="mypage_timeline">
+                <div id="mypage_timeline_title">
+                    <h2>購入履歴</h2>
+                    <p>1ヶ月内の購入履歴です</p>
+                </div>
+                <div id="mypage_timeline_area">
+                    <!-- <a href="purchase_details.html">
+                        <div id="mypage_timeline_box">
+                            <p>年月日</p>
+                        </div>
+                    </a> -->
+
+                    <p>購入履歴がありません。</p>
+
                 </div>
             </div>
         </div>
 
 
+
+
     </div>
-    <!--chara-->
-    <div id="chara"></div>
+     <!--chara-->
+     <div class="U-wrap">
+
+    <div class="Ubody">
+    <img src="images/Ubody.png">
+    <div class="Uhead">
+    <img src="images/Uhead.png">
+    <div class="Rear">
+    <img src="images/Rear.png">
+    </div>
+    <div class="Lear">
+    <img src="images/Lear.png">
+    </div>
+    <img src="images/eyes.png">
+    </div>
+
+    </div>
+
+    <div id="over" style="width: 100%; height: 100vh; top:0; position: fixed;"></div>
+
+    <div id="chara_button">
+        <a href="custom.html">
+            <p>額縁を作りに行く</p>
+        </a>
+    </div>
 
 
 
@@ -112,7 +130,7 @@ error_reporting(0);
         <ul>
             <li>
                 <a href="index.php">
-                    <h2>Top page</h2>
+                    <h2>TOP PAGE</h2>
                     <p>トップページ</p>
                 </a>
             </li>
@@ -128,7 +146,7 @@ error_reporting(0);
 
 
         <div class="batu">
-            ×
+            <font size="10">×</font>
         </div>
     </div>
 
@@ -140,8 +158,8 @@ error_reporting(0);
             <ul>
                 <li>
                     <a href="index.php">
-                    <h2>Top page</h2>
-                    <p>トップページ</p>
+                        <h2>TOP PAGE</h2>
+                        <p>トップページ</p>
                     </a>
                 </li>
                 <li class="QA">
@@ -190,7 +208,7 @@ error_reporting(0);
 
         <div id="popup_area2_box3">
             <div class="batu">
-            ×
+                <font size="10">×</font>
             </div>
         </div>
     </div>
@@ -203,8 +221,8 @@ error_reporting(0);
             <ul>
                 <li>
                     <a href="index.php">
-                    <h2>Top page</h2>
-                    <p>トップページ</p>
+                        <h2>TOP PAGE</h2>
+                        <p>トップページ</p>
                     </a>
                 </li>
                 <li class="QA">
@@ -250,12 +268,11 @@ error_reporting(0);
 
         <div id="popup_area2_box3">
             <div class="batu">
-            ×
+                <font size="10">×</font>
             </div>
         </div>
     </div>
-    
-    <script src="js/chara-mypage.js"></script>
+    <script src="js/chara_mypage.js"></script>
 </body>
 
 </html>
