@@ -9,7 +9,7 @@ jQuery(function () {
             if (appear == false) {
                 appear = true;
                 chara.stop().animate({
-                    'right': '50px' //右から50pxの位置に
+                    'right': '1%' //右から50pxの位置に
                 }, 600); //0.6秒かけて現れる
             }
         } else {

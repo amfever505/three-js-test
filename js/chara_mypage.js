@@ -8,7 +8,7 @@ jQuery(function () {
     $(window).ready(function () {
         appear = true;
         chara.stop().animate({
-            'right': '50px' //右から50pxの位置に
+            'right': '1%' //右から50pxの位置に
         }, 300); //0.3秒かけて現れる
         $("#chara_button").show(500);
 

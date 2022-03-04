@@ -10,6 +10,13 @@ body {
   line-height: 1.2;
   color: #000;
   position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden !important;
+  max-width: 100vw; 
+}
+
+body::-webkit-scrollbar{
+  display: none;
 }
 
 /*タイトル*/
@@ -151,12 +158,12 @@ p {
 
 .step {
   color: #adadad;
-  font-size: 25px;
+  font-size: 28px;
 }
 
 .active1 {
   color: #000;
-  font-size: 43px;
+  font-size: 50px;
   transition: all 300ms ease-in-out;
 }
 
@@ -302,7 +309,7 @@ h1.subcopy1 {
 
 h2.menuttl1 {
   position: absolute;
-  top: 28%;
+  top: 30%;
   left: 25%;
   transform: translate(-50%, -50%);
   align-content: center;
@@ -314,7 +321,7 @@ h2.menuttl1 {
 
 h2.menuttl2 {
   position: absolute;
-  top: 26%;
+  top: 28%;
   right: 29%;
   transform: translate(-50%, -50%);
   align-content: center;
@@ -326,7 +333,7 @@ h2.menuttl2 {
 
 h2.menuttl3 {
   position: absolute;
-  top: 62%;
+  top: 66%;
   left: 25%;
   transform: translate(-50%, -50%);
   align-content: center;
@@ -339,7 +346,7 @@ h2.menuttl3 {
 
 h2.menuttl4 {
   position: absolute;
-  top: 62%;
+  top: 66%;
   right: 30%;
   transform: translate(-50%, -50%);
   align-content: center;
@@ -351,7 +358,7 @@ h2.menuttl4 {
 
 ul.gal {
   max-width: 1685px;
-  margin: 150px 0 0 240px;
+  margin: 175px 0 0 240px;
   height: 700px;
   width: 80%;
   display: flex;
@@ -468,11 +475,29 @@ input[type='file'] {
 }
 
 .inbox2 {
-  height: 40vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.inbox2 h3{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 2em;
+}
+
+.inbox2 p{
+  font-size: 16px;
+  margin-bottom: 12px;
+  line-height: 2em;
+}
+
+.inbox2 span{
+  font-size: 16px;
+  line-height: 2em;
+  color:#adadad;
 }
 
 .inbox3 {
@@ -855,7 +880,7 @@ input:checked + .slider:before {
 
 .action-buttons2 {
   position: absolute;
-  right: 15%;
+  right: 15.5%;
   top: 70%;
   transform: translateX(-595%);
   cursor: pointer;
@@ -916,11 +941,13 @@ input:checked + .slider:before {
 
 /* /////////////////////// */
 .U-wrapRe {
+  /* pointer-events: none; */
+  /* cursor: pointer; */
 }
 .U-wrapRe img {
   width: 15vw;
-  position: fixed;
-  bottom: 5%;
+  position: absolute;
+  bottom: -25%;
   left: 5%;
   z-index: 2;
 }

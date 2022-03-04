@@ -97,7 +97,7 @@ $_SESSION = [];
 
     <!--main-->
     <div class=main>
-        <img src="images/logo.png" alt="logo" class="logo">
+        <a href="index.php"><img src="images/logo.png" alt="logo" class="logo"></a>
 
         <div class="main_txt">
             <h1>
@@ -237,11 +237,11 @@ $_SESSION = [];
 
 
 
-    <!--gallely-->
+    <!--gallery-->
     <div class="gal">
         <div id="gal_txtarea">
             <div id="gal_title">
-                <h1>Gallely</h1>
+                <h1>Gallery</h1>
                 <h2>作品集</h2>
             </div>
             <div id="gal_txtarea_1">
@@ -249,12 +249,12 @@ $_SESSION = [];
                 <p>今までに作成された額縁をピックアップしております。</p>
             </div>
         </div>
-        <div class="infiniteslide1">
-            <ul>
+        <div>
+            <ul class="infiniteslide1">
                 <li><img src="images/model1.png" alt="" width="300" height="350" /></li>
                 <li><img src="images/model3.png" alt="" width="300" height="350" /></li>
                 <li><img src="images/model6.png" alt="" width="300" height="350" /></li>
-                <li><img src="images/model5.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/model4.png" alt="" width="300" height="350" /></li>
             </ul>
         </div>
     </div>

@@ -51,7 +51,7 @@ $(function () {
           thirdStep.removeClass('active1');
           fourthStep.removeClass('active1');
         }
-    }else if ($(this).scrollTop() > 2050)  {
+    }else if ($(this).scrollTop() > 2050 || $(this).scrollTop() < 400)  {
         topBtn.stop().animate({ left: '-300px' }, 1200);
     }
   });
@@ -121,15 +121,6 @@ function back() {
   }
 }
 
-// $(window).on("scroll", function() {
-//       if($(window).scrollTop() > 2100) {
-//           $(".nav").addClass("active");
-//           console.log(true);
-//       } else {
-//           //remove the background property so it comes transparent again (defined in your css)
-//           $(".nav").removeClass("active");
-//           };
-//   });
 
 
 $('.directbtn').on('change', function() {
@@ -161,13 +152,6 @@ ScrollReveal().reveal('.subcopy1', {
   distance: '50px',
   reset: false,
 });
-
-// ScrollReveal().reveal('.subcopy', {
-//     duration: 2000,
-//     origin: 'right',
-//     distance: '50px',
-//     reset: false
-// });
 
 ScrollReveal().reveal('.menuttl1', {
   duration: 2000,
@@ -203,9 +187,9 @@ ScrollReveal().reveal('.menu1', {
   reset: true,
 });
 
-ScrollReveal().reveal('.menu2', {
-  duration: 2000,
-  origin: 'left',
-  distance: '50px',
-  reset: true,
-});
+// ScrollReveal().reveal('.menu2', {
+//   duration: 2000,
+//   origin: 'right',
+//   distance: '50px',
+//   reset: true,
+// });
