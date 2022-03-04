@@ -77,7 +77,7 @@ async function init(url) {
     <div class="selectcolor">
         <div>
           <div id="color-area">${item.name} <input type="color" id="${item.name}" value="${item.color}" /></div>
-          <p>画像から色をカスタマイズ</p>
+          <p>画像から色をカスタマイズ</p><span>※カラーパレットのスポイト<img src="./images/spuit.png" alt="">から色を選択できます<br></span>
           <input type="file" onChange="imgPreView(event, 'preview${index + 1}')" class="stepbtn1" id="file${
       index + 1
     }" />
