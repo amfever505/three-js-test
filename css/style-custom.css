@@ -703,6 +703,7 @@ input:checked + .slider:before {
 }
 .selectcolor span {
   font-size: 12px;
+  line-height: 1;
 }
 
 .selectcolor img {

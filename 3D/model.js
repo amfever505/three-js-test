@@ -77,7 +77,7 @@ async function init(url) {
     <div class="selectcolor">
         <div>
           <div id="color-area">${item.name} <input type="color" id="${item.name}" value="${item.color}" /></div>
-          <p>画像から色をカスタマイズ</p><span>※カラーパレットのスポイト<img src="./images/spuit.png" alt="">から色を選択できます<br></span>
+          <p>画像から色をカスタマイズ</p><span>※カラーパレットのスポイト<img src="./images/spuit.png" alt="">から<br>　色を選択できます<br></span>
           <input type="file" onChange="imgPreView(event, 'preview${index + 1}')" class="stepbtn1" id="file${
       index + 1
     }" />
@@ -94,7 +94,7 @@ async function init(url) {
 
   // 模様変更のエリアを作る
   if (MDL.moyou.length > 0) {
-    customizeMoyou = '模様：<br>';
+    customizeMoyou = '装飾：<br>';
     MDL.moyou.forEach((item, index) => {
       customizeMoyou += `<input type="checkbox" id="${
         item.value
@@ -257,6 +257,7 @@ async function init(url) {
       var utf8qrtext = unescape(encodeURIComponent(qrtext));
       $('#qr').html('');
       $('#qr').qrcode({ width: 160, height: 160, text: utf8qrtext });
+      $('#qr').show();
     });
 
     arLink = 'https://farme-test.herokuapp.com/ar.html?';
@@ -296,6 +297,8 @@ function setUrl() {
 window.addEventListener('load', init(url));
 const resetBtn = document.querySelector('#resetBtn');
 resetBtn.addEventListener('click', () => {
+  // qrをリセット
+  $('#qr').hide();
   init(url);
 });
 
