@@ -61,9 +61,9 @@
 
   <body>
     <div class="custom-top">
-      <div class="top1"><img src="images/model1.png" alt=""></div>
-      <div class="top2"><img src="images/model1.png" alt=""></div>
-      <div class="top3"><img src="images/model1.png" alt=""></div>
+      <div class="top1"><img src="images/model1.png" alt="" /></div>
+      <div class="top2"><img src="images/model1.png" alt="" /></div>
+      <div class="top3"><img src="images/model1.png" alt="" /></div>
 
       <a href="index.php"><img src="images/logo.png" alt="logo" class="logo" /></a>
 
@@ -92,48 +92,45 @@
       <main class="main">
         <div class="wrapper">
           <div class="section1" id="step1">
+            <div class="U-wrap">
+              <div class="Ubody">
+                <img src="images/Ubody.png" />
+                <div class="Uhead">
+                  <img src="images/Uhead.png" />
+                  <div class="Rear">
+                    <img src="images/Rear.png" />
+                  </div>
+                  <div class="Lear">
+                    <img src="images/Lear.png" />
+                  </div>
+                  <img src="images/eyes.png" />
+                </div>
+              </div>
+            </div>
             <h1 class="subcopy1">Choose your style</h1>
-            <h2 class="menuttl1">01</h2>
-            <h2 class="menuttl2">02</h2>
-            <h2 class="menuttl3">03</h2>
-            <h2 class="menuttl4">04</h2>
             <ul class="gal">
               <li>
+                <h2 class="menuttl1">01</h2>
                 <a href="#step2" class="modelicon" id="0"><img src="images/3D1.png" alt="写真1" /></a>
               </li>
               <li>
+                <h2 class="menuttl2">02</h2>
                 <a href="#step2" class="modelicon" id="1"><img src="images/3D2.png" alt="写真2" /></a>
               </li>
               <li>
+                <h2 class="menuttl3">03</h2>
                 <a href="#step2" class="modelicon" id="2"><img src="images/3D3.png" alt="写真3" /></a>
               </li>
               <li>
+                <h2 class="menuttl4">04</h2>
                 <a href="#step2" class="modelicon" id="3"><img src="images/3D4.png" alt="写真4" /></a>
               </li>
             </ul>
-            <ul class="menu1" data-cues="slideInUp" data-group="images">
-              <li>
-                <p class="cap1">まずは好きな枠の形を選んでね。</p>
-              </li>
-              <li>
-                <div class="U-wrap">
-
-                  <div class="Ubody">
-                  <img src="images/Ubody.png" />
-                  <div class="Uhead">
-                    <img src="images/Uhead.png">
-                  <div class="Rear">
-                  <img src="images/Rear.png">
-                  </div>
-                  <div class="Lear">
-                  <img src="images/Lear.png">
-                  </div>
-                  <img src="images/eyes.png">
-                  </div>
-              
-                  </div>
-                </li>
-            </ul>
+            <div class="menu1">
+              <div class="balloon1">
+                <p>まずは好きな枠の形を選んでね</p>
+              </div>
+            </div>
           </div>
 
           <div class="slide-container">
@@ -149,10 +146,30 @@
                 </div>
               </div>
             </div>
-            <div>
-              <input type="button" class="action-buttons" id="back-button" value="戻る" />
-              <input type="button" class="action-buttons1" id="next-button" value="次へ" />
-              <img src="images/reset.png" class="action-buttons2" id="resetBtn" />
+            <div class="buttons">
+              <div class="buttons-wrap">
+                <input type="button" class="action-buttons" id="back-button" value="戻る" />
+                <input type="button" class="action-buttons1" id="next-button" value="次へ" />
+                <img src="images/reset.png" class="action-buttons2" id="resetBtn" />
+                <div class="explain">
+                  <div class="exp"><p>最初の状態に戻る</p></div>
+                </div>
+              </div>
+            </div>
+            <div class="U-wrapRe">
+              <div class="UbodyRe">
+                <img src="images/UbodyRe.png" />
+                <div class="UheadRe">
+                  <img src="images/UheadRe.png" />
+                  <div class="RearRe">
+                    <img src="images/RearRe.png" />
+                  </div>
+                  <div class="LearRe">
+                    <img src="images/LearRe.png" />
+                  </div>
+                  <img src="images/eyesRe.png" />
+                </div>
+              </div>
             </div>
 
             <div class="right-slide">
@@ -161,11 +178,6 @@
                 <div class="options">
                   <div class="inbox3">
                     <p>サイズ：</p>
-                    <!-- <select name="size" id="size-selector">
-                    <option value="sm" selected>小</option>
-                    <option value="md">中</option>
-                    <option value="lg">大</option>
-                    </select> -->
                     <div class="inbox" id="size-selector">
                       <input type="radio" class="sizebtn" value="sm" name="size" id="small" checked />
                       <label for="small">小</label>
@@ -183,10 +195,7 @@
                       <label for="yoko">横</label>
                     </div>
 
-                    <div class="inbox" id="moyou-area">
-                      <!-- <input type="checkbox" class="decobtn" value="" name="deco" id="moyou1" checked />
-                      <label for="moyou1"><img src="images/frame001-1.jpg" /></label> -->
-                    </div>
+                    <div class="inbox" id="moyou-area"></div>
                   </div>
                 </div>
               </div>
@@ -247,14 +256,14 @@
                   <div class="inbox2">
                     <h3>「額縁AR」の使い方</h3>
                     <p>
-                      ①QRコードをスマホでスキャン！　カメラが起動します。<br>
+                      ①QRコードをスマホでスキャン！　カメラが起動します。<br />
                       ②指定のARマーカーを、<a
-                      href="./images/marker-large.jpeg"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >こちら</a
-                      >から表示します。<br>
-                      <span>※お手元に印刷すると、より確実です。</span><br>
+                        href="./images/marker-large.jpeg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >こちら</a
+                      >から表示します。<br />
+                      <span>※お手元に印刷すると、より確実です。</span><br />
                       ③マーカーにカメラを向けると、 あなたの作った額縁が現れます！
                     </p>
 
@@ -263,37 +272,17 @@
                     <div class="stepbtns">
                       <button id="arBtn" class="stepbtn">QRコードを作成</button><br />
                       <a href="custom.html"><button id="resetBtn" class="stepbtn">最初から</button></a>
-                </div>
-                </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <ul class="menu2" data-cues="slideInUp" data-group="images">
-              <li>
-                <div class="U-wrapRe">
-
-                  <div class="UbodyRe">
-                    <img src="images/UbodyRe.png">
-                  <div class="UheadRe">
-                    <img src="images/UheadRe.png">
-                  <div class="RearRe">
-                    <img src="images/RearRe.png">
-                  </div>
-                  <div class="LearRe">
-                    <img src="images/LearRe.png">
-                  </div>
-                    <img src="images/eyesRe.png">
-                  </div>
-                  </div>
-                
-                  </div>
-                </li>
-                <li>
-                  <p class="cap2">君の好みに合わせて額縁カスタマイズできるんだ</p>
-                </li>
-            </ul>
-
+            <div class="menu2">
+              <div class="balloon2">
+                <p id="message">次は大きさ、向き、装飾の組み合わせをどれにするか決めてね</p>
+              </div>
+            </div>
           </div>
         </div>
         <!--wrapper-->

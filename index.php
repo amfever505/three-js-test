@@ -78,17 +78,17 @@ $_SESSION = [];
     $length = "<script type='text/javascript'>alert('パスワードは8文字以上でお願いします');</script>";
     $duplicate = "<script type='text/javascript'>alert('そのメールアドレスは使われています');</script>";
     ?>
-    <?php if ($error['password'] == 'length'): ?>
+    <?php if ($error['password'] == 'length') : ?>
         <?php
         echo $length;
         ?>
-		<?php endif; ?>
-    
-    <?php if ($error['email'] == 'duplicate'): ?>
+    <?php endif; ?>
+
+    <?php if ($error['email'] == 'duplicate') : ?>
         <?php
         echo $duplicate;
         ?>
-		<?php endif; ?>
+    <?php endif; ?>
 
     <!-- OP Movie -->
     <!-- <div id="screen">
@@ -97,7 +97,7 @@ $_SESSION = [];
 
     <!--main-->
     <div class=main>
-        <a href="index.php"><img src="images/logo.png" alt="logo" class="logo"></a>
+    <a href="index.php"><img src="images/logo.png" alt="logo" class="logo" /></a>
 
         <div class="main_txt">
             <h1>
@@ -114,7 +114,7 @@ $_SESSION = [];
     </div>
 
     <!--introduction-->
-    <main class="main-content">
+    <main class="main-content" id="introduction">
         <section class="slideshow">
             <div class="slideshow-inner">
                 <div class="slides">
@@ -238,7 +238,7 @@ $_SESSION = [];
 
 
     <!--gallery-->
-    <div class="gal">
+    <div class="gal" id="gallery">
         <div id="gal_txtarea">
             <div id="gal_title">
                 <h1>Gallery</h1>
@@ -251,10 +251,10 @@ $_SESSION = [];
         </div>
         <div>
             <ul class="infiniteslide1">
-                <li><img src="images/model1.png" alt="" width="300" height="350" /></li>
-                <li><img src="images/model3.png" alt="" width="300" height="350" /></li>
-                <li><img src="images/model6.png" alt="" width="300" height="350" /></li>
-                <li><img src="images/model4.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/3D1.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/3D4.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/3D2.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/3D3.png" alt="" width="300" height="350" /></li>
             </ul>
         </div>
     </div>
@@ -262,7 +262,7 @@ $_SESSION = [];
 
 
     <!--login-->
-    <div class="login">
+    <div class="login" id="login">
         <section class="panels">
             <article class="panels__side panels__side--left">
                 <div class="panels__side panels__side--inner-left">
@@ -415,7 +415,7 @@ $_SESSION = [];
 
 
     <!--team-->
-    <div class="team">
+    <div class="team" id="team">
         <div id="team_title">
             <h1>Our team</h1>
             <h2>メンバー紹介</h2>
@@ -475,7 +475,7 @@ $_SESSION = [];
 
 
     <!--techs-->
-    <div class="techs">
+    <div class="techs" id="techs">
         <div id="techs_title">
             <h1>Our techs</h1>
             <h2>使用技術</h2>
@@ -535,14 +535,22 @@ $_SESSION = [];
                 <img src="images/logo.png" alt="logo" id="footer_logo">
             </div>
             <div id="footer_box">
-                <h2>Our features</h2>
-                <p>サイト紹介</p>
-                <h2>Gallery</h2>
-                <p>商品集</p>
-                <h2>Our team</h2>
-                <p>メンバー紹介</p>
-                <h2>Our techs</h2>
-                <p>使用技術</p>
+                <a href="#introduction">
+                    <h2>Our features</h2>
+                    <p>サイト紹介</p>
+                </a>
+                <a href="#gallery">
+                    <h2>Gallery</h2>
+                    <p>商品集</p>
+                </a>
+                <a href="#team">
+                    <h2>Our team</h2>
+                    <p>メンバー紹介</p>
+                </a>
+                <a href="#techs">
+                    <h2>Our techs</h2>
+                    <p>使用技術</p>
+                </a>
             </div>
             <div id="footer_box">
                 <h2>SNS</h2>
@@ -566,22 +574,23 @@ $_SESSION = [];
 
 
 
-     <!--chara-->
-     <div class="U-wrap">
+    <!--chara-->
+    <div class="U-wrap">
 
-    <div class="Ubody">
-    <img src="images/Ubody.png">
-    <div class="Uhead">
-    <img src="images/Uhead.png">
-    <div class="Rear">
-    <img src="images/Rear.png">
-    </div>
-    <div class="Lear">
-    <img src="images/Lear.png">
-    </div>
-    <img src="images/eyes.png">
-    </div>
+        <div class="Ubody">
+            <img src="images/Ubody.png">
+            <div class="Uhead">
+                <img src="images/Uhead.png">
+                <div class="Rear">
+                    <img src="images/Rear.png">
+                </div>
+                <div class="Lear">
+                    <img src="images/Lear.png">
+                </div>
+                <img src="images/eyes.png">
+            </div>
 
+        </div>
     </div>
 
     <div id="over" style="width: 100%; height: 100vh; top:0; position: fixed;"></div>
@@ -670,7 +679,7 @@ $_SESSION = [];
 
         <div id="popup_area2_box3">
             <div class="batu">
-            ×
+                ×
             </div>
         </div>
     </div>
@@ -730,7 +739,7 @@ $_SESSION = [];
 
         <div id="popup_area2_box3">
             <div class="batu">
-            ×
+                ×
             </div>
         </div>
     </div>
@@ -745,7 +754,7 @@ $_SESSION = [];
     <script type="text/javascript" src="js/slide.js"></script>
     <script src="js/chara.js"></script>
     <script src="js/index.js"></script>
-
+    <script src="js/index_scroll.js"></script>
 </body>
 
 </html>
