@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-
 * {
   box-sizing: border-box; /* paddingとborderを幅と高さに含める */
 }
@@ -93,6 +92,7 @@ p{
 .logo{
   width: 11%;
   margin: 47px 0 0 48px;
+  z-index: 5;
 }
 
 
@@ -793,6 +793,14 @@ footer{
   color: #fff;
 }
 
+#footer_1 a{
+  color: #fff;
+}
+
+#footer_1 a:hover{
+  color: rgb(185 185 185);
+}
+
 #footer_1{
   display: flex;
   justify-content: space-around;
@@ -982,7 +990,7 @@ border-bottom: solid;
   width:15vw;
 	position: fixed;
 	bottom: 1.5%;
-  right: 1%;
+  right: -16%;
 	z-index: 2;
 }
 
