@@ -1,14 +1,6 @@
 <?php
- session_start();
- require('dbconnect.php');
- $id = $_SESSION['email'];
- $q = "$id";
- $sql = "SELECT * FROM members WHERE email = '$q'";
- $stmt  = $db->prepare($sql);
- $stmt->execute();
- $menber = $stmt->fetchAll();
+error_reporting(0);
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -49,6 +41,9 @@
 <div class="end">
   <h2>購入が完了しました！</h2>
   <h3>ありがとうございました</h3>
+  <div class="top-btn">
+    <a href="index.php"><button id="top-btn">トップページ</button></a>
+    </div>
 </div>
 
 <div class="form-area">
@@ -59,14 +54,14 @@
   <div class="row100">
   <div class="col">
     <div class="inputBox">
-  <input type="text" name="email" id="email" required="required" placeholder="xxx@gmail.com" value="<?php  foreach($menber as $value){ echo $value['email'];}?>">
+  <input type="text" name="email" id="email" required="required" placeholder="xxx@gmail.com" value="<?php echo htmlspecialchars($_POST['email'],ENT_QUOTES); ?>">
     <span class="text">Email*</span>
     <span class="line"></span>
       </div>
     </div>
   <div class="col">
       <div class="inputBox">
-      <input type="text" name="pass" id="pass"  required="required" placeholder="●●●●●●">
+      <input type="text" name="pass" id="pass"  required="required" placeholder="●●●●●●" value="<?php echo htmlspecialchars($_POST['pass'],ENT_QUOTES); ?>">
       <span class="text">Password*</span>
       <span class="line"></span>
         </div>
@@ -76,14 +71,14 @@
   <div class="row100">
     <div class="col">
       <div class="inputBox">
-      <input type="text" name="name" id="Name" required="required" placeholder="春 東太郎" value="<?php  foreach($menber as $value){ echo $value['name'];}?>">
+      <input type="text" name="name" id="Name" required="required" placeholder="春 東太郎" value="<?php echo htmlspecialchars($_POST['name'],ENT_QUOTES); ?>">
       <span class="text">名前*</span>
       <span class="line"></span>
       </div>
     </div>
     <div class="col">
       <div class="inputBox">
-      <input type="text" name="phonetic" id="kana" required="required" placeholder="ハル トウタロウ" value="<?php  foreach($menber as $value){ echo $value['phonetic'];}?>">
+      <input type="text" name="phonetic" id="kana" required="required" placeholder="ハル トウタロウ" value="<?php echo htmlspecialchars($_POST['kana'],ENT_QUOTES); ?>">
       <span class="text">フリガナ*</span>
       <span class="line"></span>
       </div>
@@ -93,21 +88,21 @@
   <div class="row100">
     <div class="col">
       <div class="inputBox">
-      <input type="text" name="" id="yubin" required="required" placeholder="160-0023" value="<?php  foreach($menber as $value){ echo $value['postalcode'];}?>">
+      <input type="text" name="" id="yubin" required="required" placeholder="160-0023" value="<?php echo htmlspecialchars($_POST['yubin'],ENT_QUOTES); ?>">
       <span class="text">郵便番号*</span>
       <span class="line"></span>
       </div>
     </div>
     <div class="col">
       <div class="inputBox">
-      <input type="text" name="" id="address" required="required" placeholder="東京都新宿区西新宿1丁目7-3" value="<?php  foreach($menber as $value){ echo $value['address'];}?>">
+      <input type="text" name="" id="address" required="required" placeholder="東京都新宿区西新宿1丁目7-3" value="<?php echo htmlspecialchars($_POST['address'],ENT_QUOTES); ?>">
       <span class="text">住所*</span>
       <span class="line"></span>
       </div>
     </div>
     <div class="col">
       <div class="inputBox">
-      <input type="text" name="" id="phone" required="required" placeholder="03-3344-1010" value="<?php  foreach($menber as $value){ echo $value['phonenumber'];}?>">
+      <input type="text" name="" id="phone" required="required" placeholder="03-3344-1010" value="<?php echo htmlspecialchars($_POST['phonenumber'],ENT_QUOTES); ?>">
       <span class="text">電話番号*</span>
       <span class="line"></span>
       </div>
@@ -127,28 +122,28 @@
     <div class="row100">
   <div class="col">
     <div class="inputBox choice-area">
-    <input type="text" name="" class="card-num" required="required" placeholder="●●●●●●">
+    <input type="text" name="" class="card-num" required="required" placeholder="●●●●●●" value="<?php echo htmlspecialchars($_POST['card-num'],ENT_QUOTES); ?>">
     <span class="text choice-area">カード番号*</span>
     <span class="line"></span>
     </div>
   </div>
   <div class="col">
     <div class="inputBox choice-area">
-    <input type="text" name="" class="card-kigen" required="required" placeholder="3-10">
+    <input type="text" name="" class="card-kigen" required="required" placeholder="3-10" value="<?php echo htmlspecialchars($_POST['card-kigen'],ENT_QUOTES); ?>">
     <span class="text choice-area">有効期限*</span>
     <span class="line"></span>
     </div>
   </div>
   <div class="col">
     <div class="inputBox choice-area">
-    <input type="text" name="" class="card-secu" required="required" placeholder="111">
+    <input type="text" name="" class="card-secu" required="required" placeholder="111" value="<?php echo htmlspecialchars($_POST['card-secu'],ENT_QUOTES); ?>">
     <span class="text choice-area">セキュリティコード*</span>
     <span class="line"></span>
     </div>
   </div>
   <div class="col">
     <div class="inputBox choice-area">
-    <input type="text" name="" class="card-meigi" required="required" placeholder="HAL TOKYO">
+    <input type="text" name="" class="card-meigi" required="required" placeholder="HAL TOKYO" value="<?php echo htmlspecialchars($_POST['card-meigi'],ENT_QUOTES); ?>">
     <span class="text choice-area">カード名義人*</span>
     <span class="line"></span>
     </div>

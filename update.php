@@ -1,5 +1,9 @@
 <?php
     require('dbconnect.php');
+    if (!isset($_POST['email'])) {
+        header('Location: index.php');
+        exit();
+        }
     $email = $_POST['email'];
     $name = $_POST['name'];
     $phonetic = $_POST['phonetic'];

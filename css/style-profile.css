@@ -28,6 +28,7 @@ body::-webkit-scrollbar {
   margin-top: 5vh;
   background-image: url(../images/form.png);
   position: relative;
+  background-size: 100% auto;
 }
 .baner h3{
   position: absolute;

@@ -15,8 +15,7 @@ if (!empty($_SESSION)) {
 			$_SESSION['join']['name']
 			
 		));
-		    $_SESSION['message'] = '登録完了です';
-		header('Location: register_complete.php');
+		header('Location: check_complete.php');
 		exit();
 	}
 

@@ -108,7 +108,7 @@
         $(".num1").css("animation-play-state", "running");
         setTimeout(function (){
         location.href="custom.html";
-      },3300);
+      },3100);
     }
 
 

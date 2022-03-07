@@ -1,10 +1,21 @@
-<!--未完成です！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->
 <?php
-// require('dbconnect.php');
-// session_start();
-// $id = $_SESSION['email'];
-// $stmt = $db->prepare("SELECT * FROM 'members' WHERE email = ". $id);
-// $menber = $stmt->fetchAll();
+error_reporting(0);
+ session_start();
+ require('dbconnect.php');
+ if (!isset($_SESSION['email']) && !isset($_COOKIE['email'])) {
+    header('Location: index.php');
+    exit();
+    }
+if(isset($_COOKIE['email'])){
+    $id = $_COOKIE['email'];
+}else{
+    $id = $_SESSION['email'];
+}
+ $q = "$id";
+ $sql = "SELECT * FROM members WHERE email = '$q'";
+ $stmt  = $db->prepare($sql);
+ $stmt->execute();
+ $menber = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -43,35 +54,34 @@
                     <h1>My Page</h1>
                     <h2>マイページ</h2>
                 </div>
-                <!--未完成です！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->
                 <div id="profile_area">
                     <div id="profile_img">
                         <a href="custom.html"><img src="images/3o7p24soiq14m3sr_20121104184914_0740_0500.png" alt="profile" id="profile_img"></a>
                     </div>
                     <div id="profile">
                         <p>メールアドレス</p>
-                        <div id="profile_box"></div>
+                        <?php
+                    foreach($menber as $value){
+                        echo '<div id="profile_box">'.$value['email'].'</div>';
+                    }
+                    ?>
                         <p>名前</p>
-                        <div id="profile_box"></div>
+                        <?php
+                    foreach($menber as $value){
+                        echo '<div id="profile_box">'.$value['name'].'</div>';
+                    }
+                    ?>
                         <p>住所</p>
-                        <div id="profile_box"></div>
+                        <?php
+                    foreach($menber as $value){
+                        echo '<div id="profile_box">'.$value['address'].'</div>';
+                    }
+                    ?>
                         <div id="edit">
                             <a href="edit_profile.php">
                                 <p>EDIT</p>
                             </a>
                         </div>
-                        <?php
-                        foreach ($menber as $value) {
-                            echo '<p>メールアドレス</p>';
-                            echo '<div id="profile_box">' . $value['email'] . '</div>';
-                            echo "<br>";
-                            echo '<p>名前</p>';
-                            echo '<div id="profile_box">' . $value['name'] . '</div>';
-                            echo "<br>";
-                            echo '何か';
-                            echo $value[''];
-                        }
-                        ?>
                     </div>
                 </div>
             </div>

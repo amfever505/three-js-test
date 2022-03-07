@@ -2,9 +2,11 @@
 error_reporting(0);
 require('dbconnect.php');
 session_start();
+if(isset($_COOKIE['email'])){
+    header('Location: mypage.php');
+    exit();
+}
 if (!empty($_POST)) {
-
-    // 重複アカウントのチェック
     if (empty($error)) {
         $member = $db->prepare('SELECT COUNT(*) AS cnt FROM members WHERE	email=?');
         $member->execute(array($_POST['email']));
@@ -17,8 +19,6 @@ if (!empty($_POST)) {
     if (strlen($_POST['password']) < 8) {
         $error['password'] = 'length';
     }
-
-    // checkへ飛ばす
     if (empty($error)) {
         $_SESSION['join'] = $_POST;
         header('Location: check.php');
@@ -251,10 +251,18 @@ $_SESSION = [];
         </div>
         <div>
             <ul class="infiniteslide1">
-                <li><img src="images/3D1.png" alt="" width="300" height="350" /></li>
-                <li><img src="images/3D4.png" alt="" width="300" height="350" /></li>
-                <li><img src="images/3D2.png" alt="" width="300" height="350" /></li>
-                <li><img src="images/3D3.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal1.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal2.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal3.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal4.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal5.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal6.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal7.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal8.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal9.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal10.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal11.png" alt="" width="300" height="350" /></li>
+                <li><img src="images/gal12.png" alt="" width="300" height="350" /></li>
             </ul>
         </div>
     </div>
@@ -386,13 +394,6 @@ $_SESSION = [];
                                         <div class="inputBox">
                                             <input type="email" name="subject" id="subject" required="required" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES); ?>" />
                                             <span class="text">メールアドレス</span>
-                                            <span class="line"></span>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="inputBox">
-                                            <input type="password" name="pass" id="pass" required="required" size="35" maxlength="255" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES); ?>" />
-                                            <span class="text">パスワード</span>
                                             <span class="line"></span>
                                         </div>
                                     </div>
@@ -712,10 +713,10 @@ $_SESSION = [];
             <h1>Content Us</h1>
             <h2>お問い合わせ</h2>
             <div id="popup_area2_box2_1">
-                <form action="">
+            <form action="contact.php" method="POST">
                     <div id="popup_category">
                         <p>カテゴリ</p>
-                        <select name="example1" class="popup_select">
+                        <select name="subject" id="subject" class="popup_select">
                             <option value="サンプル1">選択肢のサンプル1</option>
                             <option value="サンプル2">選択肢のサンプル2</option>
                             <option value="サンプル3">選択肢のサンプル3</option>
@@ -725,11 +726,11 @@ $_SESSION = [];
                     </div>
                     <div id="popup_title">
                         <p>タイトル</p>
-                        <input type="text" class="popup_text">
+                        <input type="text"  name="text" id="text"value="<?php echo htmlspecialchars($_POST['text'],ENT_QUOTES); ?>">
                     </div>
                     <div id="popup_textarea">
                         <p>お問い合わせ内容</p>
-                        <textarea name="" class="popup_textarea" cols="30" rows="10" value="aa"></textarea><br>
+                        <textarea name="body" id="body" cols="30" rows="10" value="<?php echo htmlspecialchars($_POST['body'],ENT_QUOTES); ?>"></textarea><br>
                     </div>
                     <input type="submit" class="popup_submit">
                 </form>

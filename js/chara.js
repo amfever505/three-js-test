@@ -16,7 +16,7 @@ jQuery(function () {
             if (appear) {
                 appear = false;
                 chara.stop().animate({
-                    'right': '-240px' //右から-240pxの位置に
+                    'right': '-300px' //右から-240pxの位置に
                 }, 600); //0.6秒かけて隠れる
             }
         }

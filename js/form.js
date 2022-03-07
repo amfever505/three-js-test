@@ -1,12 +1,27 @@
 let mode = 1;
-
+var check = "記入漏れがあります";
 $('#next-btn').click(function(){
    if(mode == 1){
+    if(!email.value.trim()) {
+      alert(check);
+    }else if(!pass.value.trim()) {
+      alert(check);
+    }else if(!Name.value.trim()) {
+      alert(check);
+    }else if(!kana.value.trim()) {
+      alert(check);
+    }else if(!yubin.value.trim()) {
+      alert(check);
+    }else if(!address.value.trim()) {
+      alert(check);
+    }else if(!phone.value.trim()) {
+      alert(check);
+    }else{
     $('.all-wrap').effect('drop',{direction:'up',distance:'50px'},300);
     $('.choice').effect('drop',{direction:'down',distance:'50px',mode:'show'},300);
     $('.back-btn').fadeIn();
-
     mode++;
+    }
   }else if(mode == 2){
     $('.choice').effect('drop',{direction:'up',distance:'50px'},300);
     mode++;

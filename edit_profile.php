@@ -1,7 +1,15 @@
 <?php
  session_start();
  require('dbconnect.php');
- $id = $_SESSION['email'];
+ if (!isset($_SESSION['email']) && !isset($_COOKIE['email'])) {
+  header('Location: index.php');
+  exit();
+  }
+  if(isset($_COOKIE['email'])){
+    $id = $_COOKIE['email'];
+}else{
+    $id = $_SESSION['email'];
+}
  $q = "$id";
  $sql = "SELECT * FROM members WHERE email = '$q'";
  $stmt  = $db->prepare($sql);
@@ -42,16 +50,8 @@
  <div class="all-wrap">
 
 <div class="container">
-  <div class="row100">
-  <div class="col">
-    <div class="inputBox">
-  <input type="text" name="email" id="email" required="required" placeholder="xxx@gmail.com" value="<?php  foreach($menber as $value){ echo $value['email'];}?>">
-    <span class="text">Email*</span>
-    <span class="line"></span>
-      </div>
-    </div>
-  </div>
-
+<form action="update.php" method="post">
+  <input type="hidden" name="email" value="<?php  foreach($menber as $value){ echo $value['email'];}?>"/>
   <div class="row100">
     <div class="col">
       <div class="inputBox">
