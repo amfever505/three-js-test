@@ -159,7 +159,7 @@ async function init(url) {
   // filechange.addEventListener('change', textureSwitch, false);
 
   var img = document.createElement('img');
-  img.src = '/001.jpg';
+  img.src = '/000.jpg';
 
   // テクスチャの更新（meshは作成済みのオブジェクト）
   Canvas.side = THREE.doubleSide;
